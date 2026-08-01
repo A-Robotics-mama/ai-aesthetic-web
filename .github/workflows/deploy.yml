@@ -1,0 +1,62 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  # Lets a failed deploy be retried from the Actions tab without an empty commit.
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Never run two deploys at once, but do not cancel one in flight: the legal
+# pages Meta reviews should not disappear mid-publish.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - run: npx tsc --noEmit
+
+      - run: npm run lint
+
+      # `output: "export"` in next.config.ts writes the site to ./out
+      - run: npm run build
+
+      # Fails the build rather than publishing a site whose legal URLs 404 —
+      # these three are registered in the Meta app and must always exist.
+      - name: Verify the pages Meta requires were exported
+        run: |
+          for page in privacy-policy terms data-deletion; do
+            test -f "out/$page/index.html" || { echo "missing: out/$page/index.html"; exit 1; }
+          done
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./out
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
