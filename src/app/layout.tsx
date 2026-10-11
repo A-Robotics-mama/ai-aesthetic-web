@@ -21,7 +21,7 @@ export const metadata: Metadata = {
    */
   metadataBase: new URL(CLINIC.origin),
   title: {
-    default: `${CLINIC.name} — Aesthetic medicine in ${CLINIC.address.city}`,
+    default: `${CLINIC.name} — Aesthetics in ${CLINIC.address.city}`,
     template: `%s — ${CLINIC.name}`,
   },
   description: CLINIC.description,
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     siteName: CLINIC.name,
     locale: "en_GB",
     url: CLINIC.origin,
-    title: `${CLINIC.name} — Aesthetic medicine in ${CLINIC.address.city}`,
+    title: `${CLINIC.name} — Aesthetics in ${CLINIC.address.city}`,
     description: CLINIC.description,
   },
 };

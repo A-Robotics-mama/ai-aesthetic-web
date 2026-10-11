@@ -5,24 +5,24 @@ import { CLINIC, CONTACTS } from "@/constants/company";
 
 const services = [
   {
-    title: "Medical Aesthetics",
+    title: "Aesthetic Care",
     description:
-      "Personalized treatment plans focused on skin quality, facial harmony and natural-looking results.",
+      "Personal programmes focused on skin quality, facial harmony and natural-looking results.",
   },
   {
     title: "Advanced Cosmetology",
     description:
-      "Professional facial protocols combining clinical expertise, premium skincare and modern technologies.",
+      "Professional facial protocols combining expertise, premium skincare and modern technologies.",
   },
   {
-    title: "Body Treatments",
+    title: "Body Programmes",
     description:
       "Non-invasive technologies for body contouring, tissue quality, recovery and wellbeing.",
   },
   {
     title: "Longevity & Wellness",
     description:
-      "Evidence-informed programmes designed to support energy, recovery, healthy ageing and quality of life.",
+      "Programmes designed to support energy, recovery, graceful ageing and quality of life.",
   },
 ];
 
@@ -43,7 +43,7 @@ export default function Home() {
           <div className="flex flex-1 items-center py-24 lg:py-32">
             <div>
               <p className="mb-6 text-sm font-medium tracking-[0.24em] text-[#c8a45d] uppercase">
-                Advanced aesthetic medicine in {CLINIC.address.city}
+                Advanced aesthetics in {CLINIC.address.city}
               </p>
 
               <h1 className="max-w-5xl text-5xl font-semibold leading-[0.95] tracking-[-0.05em] sm:text-7xl lg:text-8xl">
@@ -53,9 +53,9 @@ export default function Home() {
               </h1>
 
               <p className="mt-8 max-w-2xl text-lg leading-8 text-white/60 sm:text-xl">
-                A premium aesthetic clinic combining medical expertise,
+                A premium aesthetic club combining experience,
                 intelligent diagnostics and advanced technologies to create
-                personalized treatments with natural, refined results.
+                personalized programmes with natural, refined results.
               </p>
 
               <div className="mt-10 flex flex-col gap-4 sm:flex-row">
@@ -70,16 +70,16 @@ export default function Home() {
                   href="#services"
                   className="rounded-full border border-white/15 px-8 py-4 text-center font-medium transition hover:border-white/35 hover:bg-white/5"
                 >
-                  Explore treatments
+                  Explore what we do
                 </a>
               </div>
             </div>
           </div>
 
           <div className="grid gap-5 border-t border-white/10 py-7 text-sm text-white/45 sm:grid-cols-3">
-            <p>Medical expertise</p>
+            <p>Experience and care</p>
             <p>Advanced aesthetic technologies</p>
-            <p>Personalized treatment programmes</p>
+            <p>Personalized programmes</p>
           </div>
         </section>
 
@@ -94,13 +94,13 @@ export default function Home() {
               </p>
 
               <h2 className="mt-5 text-4xl font-semibold tracking-[-0.03em] sm:text-5xl">
-                Aesthetic medicine built around the individual.
+                Aesthetics built around the individual.
               </h2>
             </div>
 
             <div className="space-y-6 text-lg leading-8 text-white/60">
               <p>
-                {CLINIC.name} approaches beauty as a combination of medical
+                {CLINIC.name} approaches beauty as a combination of deep
                 knowledge, precise assessment and respect for individual
                 characteristics.
               </p>
@@ -108,7 +108,7 @@ export default function Home() {
               <p>
                 Every programme begins with consultation and diagnostics. Our
                 specialists select technologies and protocols according to the
-                client&rsquo;s goals, condition and long-term treatment
+                client&rsquo;s goals and long-term
                 strategy.
               </p>
             </div>
@@ -120,7 +120,7 @@ export default function Home() {
           className="mx-auto max-w-7xl scroll-mt-10 px-6 py-24 lg:px-10"
         >
           <p className="text-sm tracking-[0.22em] text-[#c8a45d] uppercase">
-            Treatments
+            What we do
           </p>
 
           <h2 className="mt-5 max-w-3xl text-4xl font-semibold tracking-[-0.03em] sm:text-5xl">
@@ -147,8 +147,8 @@ export default function Home() {
           </div>
 
           <p className="mt-10 max-w-3xl text-sm leading-7 text-white/40">
-            The descriptions above are general information about the treatments
-            offered and are not medical advice. Whether a treatment is right for
+            The descriptions above are general information about what the club
+            offers and are not advice. Whether a programme is right for
             you is decided at a consultation.
           </p>
         </section>
@@ -164,12 +164,12 @@ export default function Home() {
               </p>
 
               <h2 className="mt-5 text-4xl font-semibold tracking-[-0.03em] sm:text-5xl">
-                Technology selected for clinical value.
+                Technology selected on merit.
               </h2>
 
               <p className="mt-7 max-w-2xl text-lg leading-8 text-white/60">
                 Our equipment is selected to support precise, controlled and
-                personalized treatment protocols rather than one-size-fits-all
+                personalized protocols rather than one-size-fits-all
                 procedures.
               </p>
             </div>
@@ -207,7 +207,7 @@ export default function Home() {
 
                 <p className="mt-6 max-w-2xl text-lg leading-8 text-white/60">
                   Visit {CLINIC.name} at {CLINIC.address.lines[0]} in{" "}
-                  {CLINIC.address.city} and discover a treatment programme
+                  {CLINIC.address.city} and discover a programme
                   designed around your individual goals.
                 </p>
               </div>
@@ -216,7 +216,7 @@ export default function Home() {
                 href={`mailto:${CONTACTS.clinic.email}`}
                 className="shrink-0 rounded-full bg-[#c8a45d] px-8 py-4 text-center font-medium text-black transition hover:bg-[#d8b96e]"
               >
-                Contact the clinic
+                Contact the club
               </a>
             </div>
           </div>

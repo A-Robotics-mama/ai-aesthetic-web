@@ -48,7 +48,7 @@ export const CLINIC = {
   },
   origin: "https://ai-aesthetic.eu",
   description:
-    "AI Aesthetic Club is an aesthetic medicine clinic in Limassol combining medical expertise, intelligent diagnostics and advanced technologies in personalised treatment programmes.",
+    "AI Aesthetic Club is a members' club in Limassol combining experience, intelligent diagnostics and advanced technologies in personalised programmes.",
 } as const;
 
 /**
@@ -61,15 +61,19 @@ export const TRADE_MARK = {
   filedOn: "2024-08-04",
   registeredOn: "2024-12-20",
   expiresOn: "2034-08-04",
-  classes: "Class 44 — medical, cosmetic and aesthetic services",
+  //: Полная формулировка реестра — «Class 44 — medical, cosmetic and
+  //: aesthetic services». На сайте печатаем только номер класса: он
+  //: говорит то же самое, а чужую формулировку с чужим словом мы
+  //: цитировать не обязаны.
+  classes: "Class 44",
   proprietor: COMPANY.legalName,
 } as const;
 
 export const CONTACTS = {
   clinic: {
-    label: "The clinic",
+    label: "The club",
     email: "info@ai-aesthetic.eu",
-    purpose: "Appointments, treatments and general enquiries.",
+    purpose: "Appointments, bookings and general enquiries.",
     responseTime: "1 business day",
   },
   /**
@@ -135,7 +139,7 @@ export const PROCESSORS: readonly Processor[] = [
   {
     name: "Meta Platforms Ireland Limited",
     purpose:
-      "Operates Instagram, Messenger and WhatsApp. Messages you send the clinic travel over Meta's platforms and are delivered to us through its APIs.",
+      "Operates Instagram, Messenger and WhatsApp. Messages you send the club travel over Meta's platforms and are delivered to us through its APIs.",
     dataCategories:
       "Platform-scoped user ID, profile name and username, message content and attachments, delivery metadata.",
     location: "European Union, with onward transfers by Meta to the United States.",
@@ -145,9 +149,9 @@ export const PROCESSORS: readonly Processor[] = [
   {
     name: "OpenAI Ireland Limited",
     purpose:
-      "Language model inference used to interpret an incoming message and draft a reply for a member of clinic staff to review before it is sent.",
+      "Language model inference used to interpret an incoming message and draft a reply for a member of club staff to review before it is sent.",
     dataCategories:
-      "Message text and the clinic information needed to answer it. Direct identifiers are removed before the request where the reply does not require them.",
+      "Message text and the club information needed to answer it. Direct identifiers are removed before the request where the reply does not require them.",
     location: "European Union and United States.",
     transferMechanism:
       "Standard Contractual Clauses under OpenAI's data processing addendum. API data is not used to train models.",

@@ -14,25 +14,25 @@ const technologies = [
     title: "INDIBA Deep Beauty",
     subtitle: "Cellular regeneration",
     description:
-      "Radiofrequency technology supporting tissue regeneration, skin quality, post-procedure recovery and facial as well as body treatments.",
+      "Radiofrequency technology supporting tissue quality, skin quality, recovery after a session, for the face as well as the body.",
   },
   {
     title: "IPL Formatk Systems",
-    subtitle: "Israeli medical platform",
+    subtitle: "Israeli platform",
     description:
-      "Advanced IPL technology for vascular lesions, pigmentation, skin rejuvenation and acne management using dedicated medical filters.",
+      "Advanced IPL technology for uneven tone, pigmentation, skin rejuvenation and blemish-prone skin management using dedicated filters.",
   },
   {
     title: "Laser Technologies",
-    subtitle: "Precision treatments",
+    subtitle: "Precision work",
     description:
-      "Modern laser platforms selected according to skin type and clinical indication for safe and predictable results.",
+      "Modern laser platforms selected according to skin type and what is needed for safe and predictable results.",
   },
   {
     title: "Professional Skin Diagnostics",
     subtitle: "Personalized assessment",
     description:
-      "Every treatment plan begins with detailed consultation and skin evaluation to create an individualized protocol.",
+      "Every programme begins with a detailed conversation and skin evaluation to create an individualized protocol.",
   },
 ];
 
@@ -47,8 +47,8 @@ export default function TechnologiesPage() {
         </h1>
 
         <p className="mt-8 max-w-3xl text-lg leading-8 text-white/60">
-          We invest in technologies that provide measurable clinical value,
-          predictable outcomes and maximum patient safety. Equipment names
+          We invest in technologies that provide measurable value,
+          predictable outcomes and the safety of the people we work with. Equipment names
           belong to their respective manufacturers.
         </p>
 

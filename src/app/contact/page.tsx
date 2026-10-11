@@ -6,7 +6,7 @@ import { CLINIC, COMPANY, CONTACTS } from "@/constants/company";
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "How to reach AI Aesthetic Club in Limassol: the clinic, appointments, data protection enquiries and the company's registered details.",
+    "How to reach AI Aesthetic Club in Limassol: the club, appointments, data protection enquiries and the company's registered details.",
   alternates: { canonical: "/contact" },
 };
 
@@ -24,13 +24,13 @@ export default function ContactPage() {
           </p>
 
           <h1 className="mt-4 text-4xl font-semibold tracking-[-0.03em] sm:text-5xl">
-            Talk to the clinic.
+            Talk to the club.
           </h1>
 
           <p className="mt-6 text-lg leading-8 text-white/60">
             We are glad to answer your questions and help you choose the
-            treatment programme that fits. Every message reaches a person at the
-            clinic.
+            programme that fits. Every message reaches a person at the
+            club.
           </p>
         </header>
 
@@ -60,7 +60,7 @@ export default function ContactPage() {
 
         <div className="mt-6 grid gap-6 md:grid-cols-2">
           <section className="rounded-2xl border border-white/10 bg-white/[0.03] p-8">
-            <h2 className="text-xl font-semibold">Visit the clinic</h2>
+            <h2 className="text-xl font-semibold">Visit the club</h2>
 
             <address className="mt-4 space-y-1 leading-8 text-white/60 not-italic">
               <p className="text-white/90">{CLINIC.name}</p>
@@ -73,7 +73,7 @@ export default function ContactPage() {
             </address>
 
             <p className="mt-5 text-sm leading-7 text-white/45">
-              Consultations and treatments by appointment. Please write to us to
+              Visits by appointment. Please write to us to
               arrange a time.
             </p>
           </section>
@@ -116,7 +116,7 @@ export default function ContactPage() {
 
             <p className="mt-5 text-sm leading-7 text-white/45">
               The registered office is an administrative address and is not the
-              clinic. Treatments take place at the address on the left.
+              club. Visits take place at the address on the left.
             </p>
           </section>
         </div>

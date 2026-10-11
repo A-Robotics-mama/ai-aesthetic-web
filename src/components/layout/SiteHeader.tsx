@@ -25,7 +25,7 @@ export default function SiteHeader() {
             About
           </Link>
           <Link href="/#services" className="transition hover:text-white">
-            Treatments
+            What we do
           </Link>
           <Link href="/contact" className="transition hover:text-white">
             Contact

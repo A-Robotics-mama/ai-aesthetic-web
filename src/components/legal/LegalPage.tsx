@@ -176,7 +176,7 @@ export default function LegalPage({
 
                 <div>
                   <p className="font-medium text-white/90">
-                    {CLINIC.name} — clinic
+                    {CLINIC.name} — the club
                   </p>
                   {CLINIC.address.lines.map((line) => (
                     <p key={line}>{line}</p>

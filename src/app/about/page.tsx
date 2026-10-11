@@ -6,7 +6,7 @@ import { CLINIC, COMPANY } from "@/constants/company";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "AI Aesthetic Club is an aesthetic medicine clinic at Dream Tower in Limassol, combining medical expertise, advanced technologies and personalized patient care.",
+    "AI Aesthetic Club is a members' club at Dream Tower in Limassol, combining experience, advanced technologies and personal care.",
   alternates: { canonical: "/about" },
 };
 
@@ -28,32 +28,32 @@ export default function AboutPage() {
 
         <div className="mt-12 max-w-3xl space-y-8 text-lg leading-8 text-white/60">
           <p>
-            {CLINIC.name} is a premium aesthetic medicine clinic focused on
-            combining medical expertise, advanced technologies and personalized
-            patient care.
+            {CLINIC.name} is a premium aesthetic club focused on
+            combining experience, advanced technologies and personal
+            care.
           </p>
 
           <p>
-            Every treatment begins with consultation, assessment and an
-            individualized plan designed around each patient&rsquo;s anatomy,
+            Every programme begins with a conversation, an assessment and a
+            plan designed around each member&rsquo;s own features,
             skin condition and long-term aesthetic goals.
           </p>
 
           <p>
-            Our philosophy is based on natural results, evidence-based medicine
+            Our philosophy is based on natural results, evidence
             and continuous investment in innovative technologies that improve
-            safety, precision and patient experience.
+            safety, precision and the member&rsquo;s experience.
           </p>
 
           <p>
             Located in {CLINIC.address.lines[0]}, {CLINIC.address.city},{" "}
-            {CLINIC.name} provides facial aesthetics, skin rejuvenation, body
-            treatments and longevity programmes in a modern clinical
+            {CLINIC.name} offers facial aesthetics, skin rejuvenation, body
+            programmes and longevity programmes in a modern
             environment.
           </p>
 
           <p className="text-base text-white/45">
-            The clinic is operated by {COMPANY.legalName}, a company registered
+            The club is operated by {COMPANY.legalName}, a company registered
             in the {COMPANY.jurisdiction} under number{" "}
             {COMPANY.registrationNumber}.
           </p>

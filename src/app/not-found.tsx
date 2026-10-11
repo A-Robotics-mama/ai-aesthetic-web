@@ -19,7 +19,7 @@ export default function NotFound() {
 
           <p className="mt-6 text-lg leading-8 text-white/60">
             The link may be out of date. Everything on the site is reachable
-            from the home page, and the clinic is happy to point you to the
+            from the home page, and the club is happy to point you to the
             right place.
           </p>
 
@@ -35,7 +35,7 @@ export default function NotFound() {
               href="/contact"
               className="rounded-full border border-white/15 px-8 py-4 text-center font-medium transition hover:border-white/35 hover:bg-white/5"
             >
-              Contact the clinic
+              Contact the club
             </Link>
           </div>
         </div>

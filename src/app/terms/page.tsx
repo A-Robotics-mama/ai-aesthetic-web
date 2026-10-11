@@ -13,7 +13,7 @@ import {
 export const metadata: Metadata = {
   title: "Terms of Use",
   description:
-    "The terms on which AI Aesthetic Club provides this website and communicates with you about treatments and appointments.",
+    "The terms on which AI Aesthetic Club provides this website and communicates with you about what it offerts and appointments.",
   alternates: { canonical: "/terms" },
 };
 
@@ -27,12 +27,12 @@ const SECTIONS: readonly LegalSection[] = [
           This website is operated by <Strong>{COMPANY.legalName}</Strong>,
           registered in the {COMPANY.jurisdiction} under number{" "}
           {COMPANY.registrationNumber}, trading as {CLINIC.name}. In these terms
-          &ldquo;we&rdquo; and &ldquo;the clinic&rdquo; mean that company, and
+          &ldquo;we&rdquo; and &ldquo;the club&rdquo; mean that company, and
           &ldquo;you&rdquo; means the person using the site or writing to us.
         </P>
 
         <P>
-          By using this website or contacting the clinic through it, on
+          By using this website or contacting the club through it, on
           Instagram, on Messenger or on WhatsApp, you accept these terms. If you
           do not accept them, please do not use those channels.
         </P>
@@ -40,27 +40,27 @@ const SECTIONS: readonly LegalSection[] = [
     ),
   },
   {
-    id: "not-medical-advice",
-    title: "This site is not medical advice",
+    id: "not-advice",
+    title: "This site is not advice",
     body: (
       <>
         <P>
-          Everything published here — descriptions of treatments, technologies
+          Everything published here — descriptions of programmes, technologies
           and programmes — is <Strong>general information</Strong>. It is not a
-          diagnosis, not a treatment recommendation, and not a substitute for a
+          an assessment, not a recommendation, and not a substitute for a
           consultation.
         </P>
 
         <P>
           The same applies to messages. What we tell you on Instagram, Messenger
-          or WhatsApp is preliminary: whether a treatment is appropriate for you
+          or WhatsApp is preliminary: whether something is right for you
           can only be decided at a consultation, in person, after an assessment
           and a review of your history and contraindications.
         </P>
 
         <P>
           <Strong>
-            If you have an urgent medical problem, contact emergency services.
+            If something is urgent, contact emergency services.
           </Strong>{" "}
           These channels are not monitored around the clock and must not be used
           for emergencies.
@@ -70,24 +70,24 @@ const SECTIONS: readonly LegalSection[] = [
   },
   {
     id: "messaging",
-    title: "Messaging the clinic",
+    title: "Messaging the club",
     body: (
       <>
         <P>
-          You can write to the clinic on Instagram, Messenger and WhatsApp. Those
+          You can write to the club on Instagram, Messenger and WhatsApp. Those
           platforms are operated by Meta under its own terms, which apply to you
           independently of ours.
         </P>
 
         <P>
           Replies may be drafted with the help of a language model, and are
-          reviewed by clinic staff before they are sent. We aim to answer within{" "}
+          reviewed by club staff before they are sent. We aim to answer within{" "}
           {CONTACTS.clinic.responseTime}, but we do not guarantee a response
           time and messages are not monitored continuously.
         </P>
 
         <P>
-          Please keep clinical detail out of these channels. How your messages
+          Please keep anything private out of these channels. How your messages
           are handled is described in the{" "}
           <Link
             href="/privacy-policy"
@@ -109,17 +109,17 @@ const SECTIONS: readonly LegalSection[] = [
           {
             term: "Requesting is not booking",
             description:
-              "An enquiry or a request sent through this site or by message is not a confirmed appointment. A booking exists once the clinic confirms a specific date and time to you.",
+              "An enquiry or a request sent through this site or by message is not a confirmed appointment. A booking exists once the club confirms a specific date and time to you.",
           },
           {
             term: "Changes and cancellation",
             description:
-              "Please tell us as early as you can if you cannot attend, so the slot can go to someone else. The cancellation terms that apply to your treatment are given to you when the appointment is confirmed.",
+              "Please tell us as early as you can if you cannot attend, so the slot can go to someone else. The cancellation terms that apply are given to you when the appointment is confirmed.",
           },
           {
             term: "Prices",
             description:
-              "Prices depend on the treatment plan agreed at your consultation. Any figure mentioned before then is indicative, and the price that applies is the one confirmed to you in writing.",
+              "Prices depend on the programme agreed when you come in. Any figure mentioned before then is indicative, and the price that applies is the one confirmed to you in writing.",
           },
         ]}
       />
@@ -135,7 +135,7 @@ const SECTIONS: readonly LegalSection[] = [
         <UL>
           <LI>
             use the site or our messaging channels unlawfully, or to harass
-            clinic staff;
+            club staff;
           </LI>
           <LI>
             attempt to gain unauthorised access to any part of the site or the
@@ -172,7 +172,7 @@ const SECTIONS: readonly LegalSection[] = [
         <P>
           Names of equipment and technologies mentioned on the site belong to
           their respective manufacturers and are used to identify what the
-          clinic works with.
+          club works with.
         </P>
       </>
     ),
@@ -270,9 +270,9 @@ export default function TermsPage() {
       summary={
         <>
           <p>
-            What you read here is general information about aesthetic medicine,
+            What you read here is general information about what the club does,
             not advice about your case. Only a consultation can tell you whether
-            a treatment suits you.
+            something suits you.
           </p>
           <p>
             Writing to us is not a booking — an appointment exists once we

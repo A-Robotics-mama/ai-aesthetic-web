@@ -24,7 +24,7 @@ import {
 export const metadata: Metadata = {
   title: "Privacy Policy",
   description:
-    "How AI Aesthetic Club collects, uses and protects personal data, including messages sent to the clinic through Instagram and WhatsApp.",
+    "How AI Aesthetic Club collects, uses and protects personal data, including messages sent to the club through Instagram and WhatsApp.",
   alternates: { canonical: "/privacy-policy" },
 };
 
@@ -42,7 +42,7 @@ const SECTIONS: readonly LegalSection[] = [
     body: (
       <>
         <P>
-          {CLINIC.name} is an aesthetic medicine clinic in {CLINIC.address.city},
+          {CLINIC.name} is a members' club in {CLINIC.address.city},
           operated by <Strong>{COMPANY.legalName}</Strong>, a company registered
           in the {COMPANY.jurisdiction} under number{" "}
           {COMPANY.registrationNumber}.
@@ -59,9 +59,8 @@ const SECTIONS: readonly LegalSection[] = [
         <P>
           This policy covers our website, the AI Aesthetic Club mobile
           application, the enquiries you send us and the messages you exchange
-          with the clinic on Instagram, Messenger and WhatsApp. Records created
-          in the course of your treatment are covered separately — see clause
-          11.
+          with the club on Instagram, Messenger and WhatsApp. What we record
+          about the visits themselves is covered separately — see clause 11.
         </P>
       </>
     ),
@@ -76,7 +75,7 @@ const SECTIONS: readonly LegalSection[] = [
         <Defs
           items={[
             {
-              term: "When you message the clinic on Instagram, Messenger or WhatsApp",
+              term: "When you message the club on Instagram, Messenger or WhatsApp",
               description:
                 "Your platform-scoped user ID, your profile name and username, the content of your messages and any attachments you choose to send, and delivery metadata such as timestamps. We receive this from Meta because you started a conversation with our business account.",
             },
@@ -94,10 +93,10 @@ const SECTIONS: readonly LegalSection[] = [
         />
 
         <P>
-          Please do not send us detailed health information over Instagram or
-          WhatsApp. Those are ordinary messaging channels, not a medical record
-          system. If a question needs clinical detail, we will ask you to
-          discuss it at your consultation instead.
+          Please do not send us anything private over Instagram or WhatsApp.
+          Those are ordinary messaging channels and are not meant to hold
+          anything sensitive. If a question needs that kind of detail, we will
+          ask you to discuss it in person at the club instead.
         </P>
       </>
     ),
@@ -115,14 +114,14 @@ const SECTIONS: readonly LegalSection[] = [
                 "Art. 6(1)(b) GDPR — steps taken at your request before entering into a contract for services, and performance of that contract.",
             },
             {
-              term: "To run and improve the clinic's own communication",
+              term: "To run and improve the club's own communication",
               description:
                 "Art. 6(1)(f) GDPR — our legitimate interest in answering enquiries promptly and keeping a record of what was agreed. We have weighed this against your interests and use the minimum data that makes it work.",
             },
             {
               term: "To meet obligations that apply to us",
               description:
-                "Art. 6(1)(c) GDPR — tax, accounting and health-and-safety duties, and responses to lawful requests from authorities.",
+                "Art. 6(1)(c) GDPR — tax, accounting and other duties that apply to us, and responses to lawful requests from authorities.",
             },
           ]}
         />
@@ -147,9 +146,9 @@ const SECTIONS: readonly LegalSection[] = [
         </P>
 
         <P>
-          Once the message reaches the clinic, it is stored in our own
+          Once the message reaches the club, it is stored in our own
           conversation workspace so that whoever answers you can see the history
-          and you do not have to repeat yourself. Access is limited to clinic
+          and you do not have to repeat yourself. Access is limited to club
           staff who need it to reply.
         </P>
 
@@ -173,8 +172,8 @@ const SECTIONS: readonly LegalSection[] = [
     body: (
       <>
         <P>
-          The clinic publishes a mobile application. Using it is optional: you
-          can be a patient of the clinic without ever installing it, and
+          The club publishes a mobile application. Using it is optional: you
+          can be a member of the club without ever installing it, and
           everything in this policy applies either way.
         </P>
 
@@ -183,7 +182,7 @@ const SECTIONS: readonly LegalSection[] = [
           first name, last name and phone number. An email address, an Instagram
           username, your date of birth and your preferred language are optional
           and may be left blank. The Instagram username is asked for one reason
-          only: it is how an existing conversation with the clinic is matched to
+          only: it is how an existing conversation with the club is matched to
           the person signing in, because Instagram does not tell us a phone
           number.
         </P>
@@ -197,7 +196,7 @@ const SECTIONS: readonly LegalSection[] = [
 
         <P>
           <Strong>What we do with it.</Strong> The account exists so that the
-          clinic knows who is writing and can show you your own information
+          club knows who is writing and can show you your own information
           rather than someone else&rsquo;s. Messages you send through the
           application reach the same conversation workspace as messages sent on
           Instagram or WhatsApp, and clause 6 applies to them unchanged.
@@ -215,7 +214,7 @@ const SECTIONS: readonly LegalSection[] = [
           deleted at any time, from inside the application or by writing to us.
           Everything that identifies you is erased — name, contact details,
           conversations on every channel, images and measurements. What remains
-          is an anonymous record of appointments and payments, which the clinic
+          is an anonymous record of bookings and payments, which the club
           needs for accounting and tax purposes and which cannot be connected
           back to you. The route is set out in the{" "}
           <Link
@@ -242,8 +241,8 @@ const SECTIONS: readonly LegalSection[] = [
         </P>
 
         <P>
-          A member of clinic staff reviews every draft before anything is sent.
-          No decision about your treatment, your appointment or your price is
+          A member of club staff reviews every draft before anything is sent.
+          No decision about your booking or your price is
           made automatically. There is no automated decision-making producing
           legal or similarly significant effects within the meaning of Art. 22
           GDPR.
@@ -263,7 +262,7 @@ const SECTIONS: readonly LegalSection[] = [
         </P>
 
         <Table
-          caption="Processors engaged by the clinic"
+          caption="Processors engaged by the club"
           columns={PROCESSOR_COLUMNS}
           rows={PROCESSORS.map((processor) => ({
             name: processor.name,
@@ -314,7 +313,7 @@ const SECTIONS: readonly LegalSection[] = [
       <>
         <Defs
           items={[
-            { term: "Conversations with the clinic", description: RETENTION.conversations },
+            { term: "Conversations with the club", description: RETENTION.conversations },
             { term: "Enquiries and appointment requests", description: RETENTION.enquiries },
             { term: "Records of deletion requests", description: RETENTION.deletionRequests },
             { term: "Website server logs", description: RETENTION.websiteLogs },
@@ -324,8 +323,8 @@ const SECTIONS: readonly LegalSection[] = [
 
         <P>
           When a period ends, the data is deleted. Where the law requires us to
-          keep something longer — tax records, or documentation of medical
-          treatment — that longer period governs, and we keep only what the
+          keep something longer — tax and accounting records, for
+          example — that longer period governs, and we keep only what the
           obligation covers.
         </P>
       </>
@@ -363,32 +362,37 @@ const SECTIONS: readonly LegalSection[] = [
     ),
   },
   {
-    id: "treatment-records",
-    title: "Records of your treatment",
+    id: "visit-records",
+    title: "What we record about your visits",
     body: (
       <>
         <P>
-          If you become a patient, the clinic creates records that this policy
-          does not cover: your medical history, contraindications, the consent
-          you give before a procedure, and what was done. That data is special
-          category data, processed for the purposes of health care under{" "}
-          <Strong>Art. 9(2)(h) GDPR</Strong> and the professional duties that
-          apply to the practitioners treating you.
+          When you book and come to the club we record what was booked, when,
+          who carried it out and what was paid. We keep it because the club has
+          to account for its own work, and because you may want to know later
+          what was done and when.
         </P>
 
         <P>
-          Those records are kept for the period medical documentation law
-          requires, which is longer than the periods in clause 9, and your right
-          to erasure does not extend to them while that obligation lasts.
+          Before some procedures we ask you to fill in a short form — whether
+          you have allergies, whether anything applies that would make the
+          procedure a bad idea, and your agreement to go ahead. We keep that
+          form with the record of the visit. Please do not write anything there
+          beyond what the form asks for.
         </P>
 
         <P>
-          {/* TODO(legal): publish the clinic's treatment privacy notice and link
-              it here once it has been reviewed. Until then the notice is handed
-              over on paper at the first consultation, which is what this
-              paragraph promises — do not remove it without replacing it. */}
-          You receive a separate privacy notice covering these records at your
-          first consultation, before any procedure takes place.
+          These records are kept while you are a member and afterwards for as
+          long as tax and accounting rules require. If you ask us to delete your
+          data, what remains is an anonymous entry without your name or contact
+          details — see the{" "}
+          <Link
+            href="/data-deletion"
+            className="text-[#c8a45d] underline-offset-4 transition hover:underline"
+          >
+            data deletion instructions
+          </Link>
+          .
         </P>
       </>
     ),
@@ -469,8 +473,8 @@ export default function PrivacyPolicyPage() {
       summary={
         <>
           <p>
-            We are the clinic you are talking to, and we are responsible for
-            your data. We use it to answer you and to arrange your treatment —
+            We are the club you are talking to, and we are responsible for
+            your data. We use it to answer you and to arrange your visit —
             not to advertise to you, and never to sell.
           </p>
           <p>

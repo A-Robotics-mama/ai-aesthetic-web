@@ -22,7 +22,7 @@ import {
 export const metadata: Metadata = {
   title: "User Data Deletion",
   description:
-    "How to delete your AI Aesthetic Club mobile app account, and how to ask the clinic to delete the personal data it holds about you, including Instagram and WhatsApp conversations.",
+    "How to delete your AI Aesthetic Club mobile app account, and how to ask the club to delete the personal data it holds about you, including Instagram and WhatsApp conversations.",
   alternates: { canonical: "/data-deletion" },
 };
 
@@ -63,13 +63,13 @@ const SECTIONS: readonly LegalSection[] = [
 
         <P>
           Your account and your personal data are deleted: your name, your
-          contact details, every conversation you had with the clinic on any
+          contact details, every conversation you had with the club on any
           channel, and the images and measurements taken of you.
         </P>
 
         <P>
           What remains is an anonymous record of the appointments and payments
-          themselves, which the clinic needs for its own accounting and tax
+          themselves, which the club needs for its own accounting and tax
           obligations. It carries no name, no contact details and nothing that
           identifies you, and it cannot be connected back to you.
         </P>
@@ -96,13 +96,13 @@ const SECTIONS: readonly LegalSection[] = [
     body: (
       <>
         <P>
-          On request we delete the personal data the clinic holds about you,
+          On request we delete the personal data the club holds about you,
           including:
         </P>
 
         <UL>
           <LI>
-            your conversations with the clinic on Instagram, Messenger and
+            your conversations with the club on Instagram, Messenger and
             WhatsApp, including attachments you sent;
           </LI>
           <LI>
@@ -190,10 +190,10 @@ const SECTIONS: readonly LegalSection[] = [
 
         <UL>
           <LI>
-            <Strong>Records of your treatment.</Strong> If you have been a
-            patient, medical documentation must be retained for the period
-            medical records law prescribes. Erasure does not extend to it while
-            that duty lasts.
+            <Strong>A record of what was booked and paid for.</Strong>{" "}
+            Kept as an anonymous entry, without your name or contact
+            details — the club needs it for its own accounting, and an
+            entry that identifies nobody is no longer personal data.
           </LI>
           <LI>
             <Strong>Invoices and accounting records.</Strong> Retained as tax
@@ -215,7 +215,7 @@ const SECTIONS: readonly LegalSection[] = [
   },
   {
     id: "meta",
-    title: "Removing the clinic's access on Instagram and WhatsApp",
+    title: "Removing the club's access on Instagram and WhatsApp",
     body: (
       <>
         <P>

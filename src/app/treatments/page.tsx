@@ -3,7 +3,7 @@ import SiteHeader from "@/components/layout/SiteHeader";
 import SiteFooter from "@/components/layout/SiteFooter";
 
 export const metadata: Metadata = {
-  title: "Treatments",
+  title: "What we do",
   description:
     "Injectable aesthetics, skin rejuvenation, acne and rosacea programmes, body contouring and longevity care at AI Aesthetic Club in Limassol.",
   alternates: { canonical: "/treatments" },
@@ -13,7 +13,7 @@ const treatments = [
   {
     title: "Injectable Aesthetics",
     description:
-      "Botulinum toxin, dermal fillers, collagen stimulators and regenerative treatments tailored to natural facial harmony.",
+      "Botulinum toxin, dermal fillers, collagen stimulators and regenerative programmes tailored to natural facial harmony.",
   },
   {
     title: "Skin Rejuvenation",
@@ -23,7 +23,7 @@ const treatments = [
   {
     title: "Acne & Rosacea",
     description:
-      "Comprehensive treatment programmes combining clinical skincare, IPL technology and medical supervision.",
+      "Comprehensive programmes combining professional skincare, IPL technology and expert supervision.",
   },
   {
     title: "Body Contouring",
@@ -33,12 +33,12 @@ const treatments = [
   {
     title: "Longevity",
     description:
-      "Modern preventive medicine focused on healthy ageing, recovery and long-term wellbeing.",
+      "Modern programmes focused on graceful ageing, recovery and long-term wellbeing.",
   },
   {
     title: "Professional Skincare",
     description:
-      "Medical-grade skincare programmes for daily home care and in-clinic maintenance.",
+      "Professional skincare programmes for daily home care and upkeep at the club.",
   },
 ];
 
@@ -49,13 +49,13 @@ export default function TreatmentsPage() {
 
       <main className="mx-auto w-full max-w-7xl flex-1 px-6 py-16 lg:px-10 lg:py-24">
         <h1 className="text-4xl font-semibold tracking-[-0.03em] sm:text-5xl">
-          Treatments
+          What we do
         </h1>
 
         <p className="mt-8 max-w-3xl text-lg leading-8 text-white/60">
-          Every treatment programme is individually designed after consultation
-          and clinical assessment. The descriptions below are general
-          information, not medical advice.
+          Every programme is individually designed after a conversation
+          and an assessment at the club. The descriptions below are general
+          information, not advice.
         </p>
 
         <div className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
