@@ -41,6 +41,46 @@ export function MailLink({ email }: { email: string }) {
   );
 }
 
+/**
+ * A mail link rendered as a button, with the subject and body already filled.
+ *
+ * The plain {@link MailLink} is right inside a sentence; this is for the one
+ * action a page exists to make easy. Apple's review of the mobile app follows
+ * the published route itself, and a route that is a sentence telling someone
+ * to compose an email by hand is one the reviewer may judge too hard to find.
+ *
+ * The subject and body are encoded, because a subject is a sentence with
+ * spaces and a full stop: unencoded it breaks the link in some mail clients
+ * and is silently truncated in others. The address itself is not encoded —
+ * `@` is a delimiter there, not a character to escape, and a `club%40` address
+ * is what some clients refuse to open.
+ */
+export function MailButton({
+  email,
+  subject,
+  body,
+  children,
+}: {
+  email: string;
+  subject: string;
+  body: string;
+  children: ReactNode;
+}) {
+  const href =
+    `mailto:${email}` +
+    `?subject=${encodeURIComponent(subject)}` +
+    `&body=${encodeURIComponent(body)}`;
+
+  return (
+    <a
+      href={href}
+      className="inline-flex rounded-full bg-[#c8a45d] px-8 py-4 text-center font-medium text-black transition hover:bg-[#d8b96e]"
+    >
+      {children}
+    </a>
+  );
+}
+
 export function ExternalLink({
   href,
   children,

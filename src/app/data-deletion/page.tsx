@@ -5,12 +5,14 @@ import {
   Defs,
   ExternalLink,
   LI,
+  MailButton,
   MailLink,
   P,
   Strong,
   UL,
 } from "@/components/legal/prose";
 import {
+  APP_ACCOUNT_DELETION,
   CONTACTS,
   LEGAL_VERSIONS,
   RETENTION,
@@ -20,7 +22,7 @@ import {
 export const metadata: Metadata = {
   title: "User Data Deletion",
   description:
-    "How to ask AI Aesthetic Club to delete the personal data it holds about you, including Instagram and WhatsApp conversations, and what happens after you ask.",
+    "How to delete your AI Aesthetic Club mobile app account, and how to ask the clinic to delete the personal data it holds about you, including Instagram and WhatsApp conversations.",
   alternates: { canonical: "/data-deletion" },
 };
 
@@ -28,6 +30,61 @@ export const metadata: Metadata = {
 const SUBJECT = "User Data Deletion Request";
 
 const SECTIONS: readonly LegalSection[] = [
+  {
+    id: "account-deletion",
+    title: "Account Deletion \u2014 AI Aesthetic Club Mobile App",
+    body: (
+      <>
+        <P>
+          <Strong>Request to Delete Your AI Aesthetic Club Account</Strong>
+        </P>
+
+        <P>
+          If you have registered an account in the AI Aesthetic Club mobile
+          application and would like to delete it, you can submit an account
+          deletion request directly from the application or by contacting us at{" "}
+          <MailLink email={CONTACTS.privacy.email} />.
+        </P>
+
+        <P>
+          To request deletion, please send an email with the subject:{" "}
+          <Strong>{APP_ACCOUNT_DELETION.subject}</Strong>
+        </P>
+
+        <P>
+          Please include the phone number associated with your account so that
+          we can identify your profile and verify your request.
+        </P>
+
+        <P>
+          Once your identity has been verified, we will process your request in
+          accordance with applicable data protection legislation.
+        </P>
+
+        <P>
+          Your account and personal data that are no longer required will be
+          deleted. Certain medical records, financial documents, or other
+          information may need to be retained where required by applicable law.
+          Such information will be retained only for the legally required period
+          and will not be used for unrelated purposes.
+        </P>
+
+        <P>
+          For assistance, contact <MailLink email={CONTACTS.privacy.email} />.
+        </P>
+
+        <div className="pt-2">
+          <MailButton
+            email={CONTACTS.privacy.email}
+            subject={APP_ACCOUNT_DELETION.subject}
+            body={APP_ACCOUNT_DELETION.body}
+          >
+            Request Account Deletion
+          </MailButton>
+        </div>
+      </>
+    ),
+  },
   {
     id: "what-can-be-deleted",
     title: "What can be deleted",
@@ -222,7 +279,18 @@ export default function DataDeletionPage() {
       summary={
         <>
           <p>
-            Email <MailLink email={CONTACTS.privacy.email} /> with the subject{" "}
+            <Strong>Using the mobile app?</Strong> To delete your account, see{" "}
+            <Link
+              href="#account-deletion"
+              className="text-[#c8a45d] underline-offset-4 transition hover:underline"
+            >
+              Account Deletion
+            </Link>{" "}
+            below, or write to <MailLink email={CONTACTS.privacy.email} />.
+          </p>
+          <p>
+            For anything else, email{" "}
+            <MailLink email={CONTACTS.privacy.email} /> with the subject{" "}
             <Strong>{SUBJECT}</Strong>, telling us which Instagram username,
             WhatsApp number or email address you used to contact us.
           </p>

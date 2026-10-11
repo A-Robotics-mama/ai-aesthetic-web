@@ -52,15 +52,16 @@ const SECTIONS: readonly LegalSection[] = [
           For everything described in this policy we are the{" "}
           <Strong>data controller</Strong>: we decide why your personal data is
           collected and how it is used, and we answer for it. Where other
-          companies handle data on our instructions, they are listed in clause 6
+          companies handle data on our instructions, they are listed in clause 7
           and they act only on our behalf.
         </P>
 
         <P>
-          This policy covers our website, the enquiries you send us and the
-          messages you exchange with the clinic on Instagram, Messenger and
-          WhatsApp. Records created in the course of your treatment are covered
-          separately — see clause 10.
+          This policy covers our website, the AI Aesthetic Club mobile
+          application, the enquiries you send us and the messages you exchange
+          with the clinic on Instagram, Messenger and WhatsApp. Records created
+          in the course of your treatment are covered separately — see clause
+          11.
         </P>
       </>
     ),
@@ -154,12 +155,73 @@ const SECTIONS: readonly LegalSection[] = [
 
         <P>
           You can stop this at any time by not writing to us on those channels,
-          and you can ask us to delete the conversation — see clause 9 and the{" "}
+          and you can ask us to delete the conversation — see clause 10 and the{" "}
           <Link
             href="/data-deletion"
             className="text-[#c8a45d] underline-offset-4 transition hover:underline"
           >
             data deletion instructions
+          </Link>
+          .
+        </P>
+      </>
+    ),
+  },
+  {
+    id: "mobile-app",
+    title: "The AI Aesthetic Club mobile application",
+    body: (
+      <>
+        <P>
+          The clinic publishes a mobile application. Using it is optional: you
+          can be a patient of the clinic without ever installing it, and
+          everything in this policy applies either way.
+        </P>
+
+        <P>
+          <Strong>Creating an account.</Strong> The application asks for your
+          first name, last name and phone number. An email address, an Instagram
+          username, your date of birth and your preferred language are optional
+          and may be left blank. The Instagram username is asked for one reason
+          only: it is how an existing conversation with the clinic is matched to
+          the person signing in, because Instagram does not tell us a phone
+          number.
+        </P>
+
+        <P>
+          <Strong>Signing in.</Strong> There is no password. We send a one-time
+          code to the phone number or email address on the account, and the
+          account is identified by that number. We keep a record that you gave
+          consent at registration, and which wording you were shown.
+        </P>
+
+        <P>
+          <Strong>What we do with it.</Strong> The account exists so that the
+          clinic knows who is writing and can show you your own information
+          rather than someone else&rsquo;s. Messages you send through the
+          application reach the same conversation workspace as messages sent on
+          Instagram or WhatsApp, and clause 6 applies to them unchanged.
+        </P>
+
+        <P>
+          <Strong>Why we are allowed to.</Strong> Art. 6(1)(b) GDPR — the
+          account is the service you asked for and cannot be provided without
+          these details. The date of birth is used only to greet you on your
+          birthday and rests on Art. 6(1)(f); tell us to remove it and we will.
+        </P>
+
+        <P>
+          <Strong>Deleting it.</Strong> You can ask for the account to be
+          deleted at any time, from inside the application or by writing to us.
+          The account record and the personal data no longer needed are erased;
+          treatment records and accounting documents are kept only where the law
+          requires it, and only for as long as it requires. The route is set out
+          in the{" "}
+          <Link
+            href="/data-deletion#account-deletion"
+            className="text-[#c8a45d] underline-offset-4 transition hover:underline"
+          >
+            account deletion instructions
           </Link>
           .
         </P>
@@ -315,7 +377,7 @@ const SECTIONS: readonly LegalSection[] = [
 
         <P>
           Those records are kept for the period medical documentation law
-          requires, which is longer than the periods in clause 8, and your right
+          requires, which is longer than the periods in clause 9, and your right
           to erasure does not extend to them while that obligation lasts.
         </P>
 

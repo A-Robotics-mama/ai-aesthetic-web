@@ -87,13 +87,33 @@ export const CONTACTS = {
 } as const;
 
 /**
+ * Deleting an account created in the AI Aesthetic Club mobile application.
+ *
+ * Apple requires an app that creates accounts to offer a way to delete one,
+ * and the review checks that the published instructions actually work. The
+ * subject line is fixed wording rather than free text so that a request is
+ * never lost in the mailbox, and it lives here because the app and the website
+ * must ask for exactly the same thing.
+ *
+ * The account is registered against a phone number, so that is what identifies
+ * the profile: no other identifier is collected at sign-up.
+ */
+export const APP_ACCOUNT_DELETION = {
+  subject:
+    "I am an AI Aesthetic Club mobile app user and want to delete my account.",
+  body:
+    "Please delete my AI Aesthetic Club mobile app account. " +
+    "My registered phone number is: ",
+} as const;
+
+/**
  * Document versions and effective dates. Bump both in the same commit whenever
  * the substance of a legal page changes; the pages show them to the reader.
  */
 export const LEGAL_VERSIONS = {
   terms: { version: "1.0", effectiveDate: "2026-08-01" },
-  privacy: { version: "1.0", effectiveDate: "2026-08-01" },
-  dataDeletion: { version: "1.0", effectiveDate: "2026-08-01" },
+  privacy: { version: "1.1", effectiveDate: "2026-10-11" },
+  dataDeletion: { version: "1.1", effectiveDate: "2026-10-11" },
 } as const;
 
 export type Processor = {
