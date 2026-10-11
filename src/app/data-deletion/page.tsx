@@ -62,11 +62,16 @@ const SECTIONS: readonly LegalSection[] = [
         </P>
 
         <P>
-          Your account and personal data that are no longer required will be
-          deleted. Certain medical records, financial documents, or other
-          information may need to be retained where required by applicable law.
-          Such information will be retained only for the legally required period
-          and will not be used for unrelated purposes.
+          Your account and your personal data are deleted: your name, your
+          contact details, every conversation you had with the clinic on any
+          channel, and the images and measurements taken of you.
+        </P>
+
+        <P>
+          What remains is an anonymous record of the appointments and payments
+          themselves, which the clinic needs for its own accounting and tax
+          obligations. It carries no name, no contact details and nothing that
+          identifies you, and it cannot be connected back to you.
         </P>
 
         <P>

@@ -213,10 +213,11 @@ const SECTIONS: readonly LegalSection[] = [
         <P>
           <Strong>Deleting it.</Strong> You can ask for the account to be
           deleted at any time, from inside the application or by writing to us.
-          The account record and the personal data no longer needed are erased;
-          treatment records and accounting documents are kept only where the law
-          requires it, and only for as long as it requires. The route is set out
-          in the{" "}
+          Everything that identifies you is erased — name, contact details,
+          conversations on every channel, images and measurements. What remains
+          is an anonymous record of appointments and payments, which the clinic
+          needs for accounting and tax purposes and which cannot be connected
+          back to you. The route is set out in the{" "}
           <Link
             href="/data-deletion#account-deletion"
             className="text-[#c8a45d] underline-offset-4 transition hover:underline"
