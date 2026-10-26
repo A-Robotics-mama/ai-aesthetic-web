@@ -19,15 +19,6 @@ import "./globals.css";
  * кириллицу: русской половине сайта больше не нужен второй шрифт, который
  * браузер подбирал по глифу.
  */
-/**
- * Какой вариант собираем. Тёмный — обычный; светлые включаются переменной
- * окружения на сборке, чтобы на одном коде было три превью и Борис мог
- * сравнить их рядом: `light` — бледно-голубой, `ivory` — слоновая кость.
- */
-const VARIANTS = ["light", "ivory"] as const;
-
-const THEME = VARIANTS.find((one) => one === process.env.NEXT_PUBLIC_THEME) ?? "dark";
-
 const sans = Jost({
   variable: "--font-sans",
   subsets: ["latin", "cyrillic"],
@@ -60,11 +51,11 @@ export const metadata: Metadata = {
   },
 };
 
-const GROUND = { dark: "#080706", light: "#f1f5fb", ivory: "#f8f3e7" };
-
 export const viewport: Viewport = {
-  themeColor: GROUND[THEME],
-  colorScheme: THEME === "dark" ? "dark" : "light",
+  /* Тот же кремовый, что и у страницы: иначе телефон красит свою полосу
+     поверх шапки чужим цветом. */
+  themeColor: "#f8f3e7",
+  colorScheme: "light",
 };
 
 export default function RootLayout({
@@ -73,11 +64,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      data-theme={THEME}
-      className={`${sans.variable} h-full antialiased`}
-    >
+    <html lang="en" className={`${sans.variable} h-full antialiased`}>
       <head>
         {/*
           Marks the document as scripted before anything is painted. The

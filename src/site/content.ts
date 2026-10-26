@@ -73,11 +73,7 @@ export type Copy = {
     eyebrow: string;
     title: string;
     lede: string;
-    /** Подпись над полным списком парка. */
-    listLabel: string;
     maker: string;
-    prev: string;
-    next: string;
     devices: Device[];
   };
   place: {
@@ -238,10 +234,7 @@ const EN: Copy = {
     title: "Twelve platforms, and what each one is actually for.",
     lede:
       "The park in full, as it stands in the club's own register — one machine at a time, with the three or four things that matter about it. Every name below is a device you can be treated on this week.",
-    listLabel: "The park in full",
     maker: "At the manufacturer",
-    prev: "Previous platform",
-    next: "Next platform",
     devices: [
       {
         id: "tech-isemeco",
@@ -630,10 +623,7 @@ const RU: Copy = {
     title: "Двенадцать платформ — и что каждая делает на самом деле.",
     lede:
       "Весь парк, как он записан в журнале клуба: по одному аппарату на кадр и три-четыре главных факта о нём. Каждое имя в списке — машина, на которой можно записаться на этой неделе.",
-    listLabel: "Весь парк",
     maker: "У производителя",
-    prev: "Предыдущая платформа",
-    next: "Следующая платформа",
     devices: [
       {
         id: "tech-isemeco",

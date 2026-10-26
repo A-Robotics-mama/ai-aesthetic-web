@@ -1,79 +1,24 @@
 @import "tailwindcss";
 
 /**
- * The club's visual identity: gold on black.
+ * The club's visual identity: bronze on ivory.
  *
- * Boris, 21.10.2026: «фон у нас черный, золото на черном». The ground is a
- * warm near-black rather than #000 — photography of skin and candlelight sits
- * on it without the cut-out look a pure black gives — and every neutral is
- * biased towards the gold so nothing on the page reads as a stock grey.
+ * Boris, 21.10.2026: «фон у нас черный, золото на черном» — так сайт и был
+ * собран; 26.10.2026, посмотрев три варианта рядом, он выбрал кремовый:
+ * «работаем только с ivory, утвержденный цвет». Тёплая кость золоту родная —
+ * в отличие от холодного голубого, где золотое пятно за заголовком читалось
+ * как грязь, — а снимки клуба, снятые при тёплом свете, сидят на ней спокойно.
  *
- * The site commits to this one world: there is no light theme, and every
- * colour is declared here rather than guessed per component.
+ * Инверсией чёрного это не было и не стало: золото #c8a45d на почти белом даёт
+ * контраст 1,9:1, то есть подпись в 10-й кегль пропадает. Поэтому акцент —
+ * бронза #8a6a22, текст — тёплый почти чёрный, а знак получает фильтр: он
+ * нарисован золотой линией, и на кремовом её надо притемнить.
+ *
+ * Сайт держится одного мира: тёмной темы нет, и каждый цвет объявлен здесь, а
+ * не угадывается в компоненте. Подписи поверх фотографий — исключение, им
+ * тёмная палитра возвращается классом `.over-photo`.
  */
 @theme {
-  --color-ink: #080706;
-  --color-ink-2: #100e0c;
-  --color-ink-3: #171310;
-  --color-gold: #c8a45d;
-  --color-gold-soft: #e9d4a3;
-  --color-bone: #f3eee5;
-  --color-sand: #a79c8a;
-
-  /* Одно семейство: заголовок от подписи отличают вес, кегль и разрядка. */
-  --font-display: var(--font-sans), "Helvetica Neue", Arial, sans-serif;
-  --font-body: var(--font-sans), "Helvetica Neue", Arial, sans-serif;
-}
-
-/**
- * Светлый вариант.
- *
- * Борис, 26.10.2026: «сделай теперь вариант очень бледно голубым фоном вместо
- * черного, прачктически белым и 5% синего». Тот же код собирается в обе
- * стороны: `NEXT_PUBLIC_THEME=light npm run build` ставит на <html>
- * data-theme="light", и дальше всё идёт отсюда — утилиты Tailwind ссылаются
- * на эти же переменные.
- *
- * Поменять местами чёрное и белое недостаточно: золото #c8a45d на почти белом
- * даёт контраст 1,9:1, то есть подпись в 10-й кегль пропадает. Поэтому в
- * светлом варианте акцент уходит в бронзу, а сам знак получает фильтр — он
- * нарисован золотой линией, и на бледном фоне её надо притемнить.
- */
-html[data-theme="light"] {
-  --color-ink: #f1f5fb;
-  --color-ink-2: #e8eef7;
-  --color-ink-3: #dde6f2;
-  --color-gold: #8a6a22;
-  --color-gold-soft: #a4802c;
-  --color-bone: #111821;
-  --color-sand: #5b6675;
-
-  --color-on-gold: #fdfaf3;
-  --glow-core: rgba(146, 172, 208, 0.36);
-  --veil-top: rgba(241, 245, 251, 0.9);
-  --veil-middle: rgba(241, 245, 251, 0.66);
-  --veil-bottom: rgba(241, 245, 251, 0.95);
-  --grain-opacity: 0.14;
-  --mark-filter: brightness(0.66) saturate(1.3);
-  --trace: 104, 130, 166;
-  --node: 86, 112, 150;
-
-  color-scheme: light;
-}
-
-/**
- * Слоновая кость.
- *
- * Борис, 26.10.2026: «давай попробуем фон цвета слоновой кости». Тёплый
- * кремовый фон золоту родной — в отличие от холодного голубого, где золотое
- * пятно за заголовком читалось как грязь и его пришлось уводить в синеву.
- * Поэтому здесь свечение остаётся золотым, созвездие — бронзовым, а зерно
- * чуть заметнее: на кремовом оно работает как фактура бумаги.
- *
- * Текст — тёплый почти чёрный, а не тот же, что на голубом: чёрное с синевой
- * на кремовом выглядит чужим.
- */
-html[data-theme="ivory"] {
   --color-ink: #f8f3e7;
   --color-ink-2: #f2ebda;
   --color-ink-3: #eae0cb;
@@ -82,32 +27,28 @@ html[data-theme="ivory"] {
   --color-bone: #1a1611;
   --color-sand: #6b6152;
 
+  /* Одно семейство: заголовок от подписи отличают вес, кегль и разрядка. */
+  --font-display: var(--font-sans), "Helvetica Neue", Arial, sans-serif;
+  --font-body: var(--font-sans), "Helvetica Neue", Arial, sans-serif;
+}
+
+
+:root {
+  /* Чем покрашено то, что нельзя собрать из токенов выше: на эти переменные
+     ссылаются inline-стили и холст созвездия, а не утилиты Tailwind, поэтому
+     объявлены они здесь — из @theme сборка выкинула бы их как неиспользуемые. */
   --color-on-gold: #fdfaf3;
   --glow-core: rgba(200, 164, 93, 0.34);
   --veil-top: rgba(248, 243, 231, 0.9);
   --veil-middle: rgba(248, 243, 231, 0.64);
   --veil-bottom: rgba(248, 243, 231, 0.95);
+  /* На кремовом зерно работает как фактура бумаги, поэтому его чуть больше. */
   --grain-opacity: 0.18;
   --mark-filter: brightness(0.68) saturate(1.25);
   --trace: 150, 118, 58;
   --node: 138, 106, 34;
 
   color-scheme: light;
-}
-
-:root {
-  /* Чем покрашено то, что нельзя собрать из токенов выше: на эти переменные
-     ссылаются inline-стили и холст созвездия, а не утилиты Tailwind, поэтому
-     объявлены они здесь — из @theme сборка выкинула бы их как неиспользуемые. */
-  --color-on-gold: #0a0806;
-  --glow-core: rgba(200, 164, 93, 0.28);
-  --veil-top: rgba(8, 7, 6, 0.88);
-  --veil-middle: rgba(8, 7, 6, 0.55);
-  --veil-bottom: rgba(8, 7, 6, 0.93);
-  --grain-opacity: 0.4;
-  --mark-filter: none;
-  --trace: 200, 164, 93;
-  --node: 233, 212, 163;
 
   --gutter: 1.5rem;
   --hairline: color-mix(in oklab, var(--color-gold) 26%, transparent);
