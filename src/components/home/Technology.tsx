@@ -59,7 +59,7 @@ export default function Technology({ copy }: { copy: Copy }) {
                     style={{ ["--delay" as string]: `${index * 60}ms` }}
                   >
                     <span className="flex items-baseline gap-5">
-                      <span className="mono text-[0.62rem] text-gold/60">
+                      <span className="label text-[0.62rem] text-gold/60">
                         {String(index + 1).padStart(2, "0")}
                       </span>
                       <span
@@ -71,7 +71,7 @@ export default function Technology({ copy }: { copy: Copy }) {
                       </span>
                     </span>
 
-                    <span className="mono shrink-0 text-[0.58rem] tracking-[0.2em] text-sand uppercase">
+                    <span className="label shrink-0 text-[0.58rem] tracking-[0.2em] text-sand uppercase">
                       {item.meta}
                     </span>
                   </button>
@@ -107,7 +107,7 @@ export default function Technology({ copy }: { copy: Copy }) {
                 <div className="card-shade pointer-events-none absolute inset-x-0 bottom-0 h-1/2" />
               </div>
 
-              <p className="mono mt-6 text-[0.62rem] tracking-[0.24em] text-gold uppercase">
+              <p className="label mt-6 text-[0.62rem] tracking-[0.24em] text-gold uppercase">
                 {items[shown].meta}
               </p>
               <p className="mt-3 text-[1rem] leading-8 text-bone/70">{items[shown].text}</p>

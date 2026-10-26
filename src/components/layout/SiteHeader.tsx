@@ -48,16 +48,16 @@ export default function SiteHeader({ lang = "en" }: { lang?: Lang }) {
       <div className="shell flex items-center justify-between py-4 lg:py-5">
         <Link href={home} className="flex items-center gap-3 py-1" onClick={() => setOpen(false)}>
           <span className="leading-tight">
-            <span className="mono block text-[0.72rem] tracking-[0.26em] text-bone uppercase lg:text-[0.78rem]">
+            <span className="label block text-[0.72rem] tracking-[0.26em] text-bone uppercase lg:text-[0.78rem]">
               AI Aesthetic Club
             </span>
-            <span className="mono block text-[0.55rem] tracking-[0.22em] text-gold/80 uppercase">
+            <span className="label block text-[0.55rem] tracking-[0.22em] text-gold/80 uppercase">
               Limassol · Cyprus
             </span>
           </span>
         </Link>
 
-        <nav className="mono hidden items-center gap-9 text-[0.68rem] tracking-[0.2em] uppercase lg:flex">
+        <nav className="label hidden items-center gap-9 text-[0.68rem] tracking-[0.2em] uppercase lg:flex">
           {copy.nav.map((item) => (
             <a
               key={item.href}
@@ -72,7 +72,7 @@ export default function SiteHeader({ lang = "en" }: { lang?: Lang }) {
         <div className="flex items-center gap-4">
           <Link
             href={OTHER_LANG[lang]}
-            className="mono rounded-full border border-gold/30 px-3 py-1.5 text-[0.62rem] tracking-[0.2em] text-gold uppercase transition-colors hover:border-gold hover:bg-gold/10"
+            className="label rounded-full border border-gold/30 px-3 py-1.5 text-[0.62rem] tracking-[0.2em] text-gold uppercase transition-colors hover:border-gold hover:bg-gold/10"
           >
             {copy.langLabel}
           </Link>

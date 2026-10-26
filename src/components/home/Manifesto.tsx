@@ -60,7 +60,7 @@ export default function Manifesto({ copy }: { copy: Copy }) {
 
         <p
           ref={block}
-          className="display mt-10 max-w-[22ch] text-[clamp(1.9rem,1.1rem+3.4vw,4.1rem)] leading-[1.14]"
+          className="display display-xl mt-10 max-w-[22ch] text-[clamp(1.9rem,1.1rem+3.4vw,4.1rem)] leading-[1.14]"
           /* Lit until the scroll handler takes over: without script the
              sentence must be readable, not a grey block. */
           style={{ ["--p" as string]: 1 }}
@@ -77,7 +77,7 @@ export default function Manifesto({ copy }: { copy: Copy }) {
           </p>
 
           <p
-            className="mono mt-10 text-[0.65rem] tracking-[0.3em] text-sand uppercase"
+            className="label mt-10 text-[0.65rem] tracking-[0.3em] text-sand uppercase"
             data-reveal
           >
             — {copy.manifesto.by}
@@ -104,7 +104,7 @@ export default function Manifesto({ copy }: { copy: Copy }) {
 
             <div className="card-shade pointer-events-none absolute inset-x-0 bottom-0 h-1/3" />
 
-            <figcaption className="mono absolute inset-x-5 bottom-5 flex items-end justify-between gap-4 text-[0.6rem] leading-5 tracking-[0.22em] text-bone/70 uppercase">
+            <figcaption className="label absolute inset-x-5 bottom-5 flex items-end justify-between gap-4 text-[0.6rem] leading-5 tracking-[0.22em] text-bone/70 uppercase">
               <span>{copy.hero.caption}</span>
               <span className="text-gold">●&nbsp;LIVE</span>
             </figcaption>

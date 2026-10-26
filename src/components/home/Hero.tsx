@@ -47,7 +47,7 @@ export default function Hero({ copy, lang }: { copy: Copy; lang: Lang }) {
           </p>
 
           <h1
-            className={`display mt-7 text-[clamp(2.6rem,1.1rem+4.1vw,6.2rem)] ${
+            className={`display display-xl mt-7 text-[clamp(2.6rem,1.1rem+4.1vw,6.2rem)] ${
               lit ? "is-lit" : ""
             }`}
           >
@@ -59,7 +59,7 @@ export default function Hero({ copy, lang }: { copy: Copy; lang: Lang }) {
                 <span key={`${bare}-${index}`} className="word">
                   <span
                     style={{ ["--delay" as string]: `${120 + index * 90}ms` }}
-                    className={accent ? "text-gold italic" : undefined}
+                    className={accent ? "text-gold" : undefined}
                   >
                     {bare}
                     {index < words.length - 1 ? " " : ""}
@@ -91,7 +91,7 @@ export default function Hero({ copy, lang }: { copy: Copy; lang: Lang }) {
             data-reveal
             style={{ ["--delay" as string]: "950ms" }}
           >
-            <span className="mono text-[0.65rem] tracking-[0.3em] text-sand uppercase">
+            <span className="label text-[0.65rem] tracking-[0.3em] text-sand uppercase">
               {copy.hero.scroll}
             </span>
           </div>
@@ -122,7 +122,7 @@ export default function Hero({ copy, lang }: { copy: Copy; lang: Lang }) {
               {PARK.map((name) => (
                 <span
                   key={`${pass}-${name}`}
-                  className="mono flex items-center gap-12 text-[0.72rem] tracking-[0.24em] text-bone/55 uppercase whitespace-nowrap"
+                  className="label flex items-center gap-12 text-[0.72rem] tracking-[0.24em] text-bone/55 uppercase whitespace-nowrap"
                 >
                   {name}
                   <span className="text-gold/60">✦</span>

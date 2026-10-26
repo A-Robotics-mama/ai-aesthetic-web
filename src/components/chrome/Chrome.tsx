@@ -149,7 +149,7 @@ export default function Chrome({ intro = true }: { intro?: boolean }) {
             />
             <div className="curtain-line mt-7 h-px w-48 bg-gold sm:w-72" />
             <p
-              className="curtain-mark mono mt-5 text-[0.65rem] tracking-[0.3em] text-sand uppercase"
+              className="curtain-mark label mt-5 text-[0.65rem] tracking-[0.3em] text-sand uppercase"
               style={{ animationDelay: "0.45s" }}
             >
               Limassol

@@ -31,7 +31,7 @@ export default function Contact({ copy }: { copy: Copy }) {
               </p>
 
               <h2
-                className="display mt-6 max-w-[14ch] text-[clamp(2.2rem,1.4rem+3vw,4rem)]"
+                className="display display-xl mt-6 max-w-[14ch] text-[clamp(2.2rem,1.4rem+3vw,4rem)]"
                 data-reveal
                 style={{ ["--delay" as string]: "80ms" }}
               >
@@ -63,17 +63,17 @@ export default function Contact({ copy }: { copy: Copy }) {
 
             <dl className="space-y-8" data-reveal style={{ ["--delay" as string]: "260ms" }}>
               <div>
-                <dt className="mono text-[0.58rem] tracking-[0.26em] text-gold uppercase">
+                <dt className="label text-[0.58rem] tracking-[0.26em] text-gold uppercase">
                   {copy.contact.hoursLabel}
                 </dt>
                 <dd className="mt-3 text-[1.05rem] text-bone/85">{copy.contact.hours}</dd>
-                <dd className="mono mt-1 text-[0.68rem] tracking-[0.14em] text-sand uppercase">
+                <dd className="label mt-1 text-[0.68rem] tracking-[0.14em] text-sand uppercase">
                   {copy.contact.closed}
                 </dd>
               </div>
 
               <div>
-                <dt className="mono text-[0.58rem] tracking-[0.26em] text-gold uppercase">
+                <dt className="label text-[0.58rem] tracking-[0.26em] text-gold uppercase">
                   {copy.contact.addressLabel}
                 </dt>
                 <dd className="mt-3 text-[1.05rem] leading-7 text-bone/85">
@@ -86,7 +86,7 @@ export default function Contact({ copy }: { copy: Copy }) {
               </div>
 
               <div>
-                <dt className="mono text-[0.58rem] tracking-[0.26em] text-gold uppercase">
+                <dt className="label text-[0.58rem] tracking-[0.26em] text-gold uppercase">
                   {copy.contact.writeLabel}
                 </dt>
                 <dd className="mt-3 text-[1.05rem] text-bone/85">

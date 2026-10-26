@@ -38,7 +38,7 @@ export default function Residence({ copy }: { copy: Copy }) {
         </p>
 
         <h2
-          className="display mt-6 max-w-[16ch] text-[clamp(2.3rem,1.5rem+3vw,4.4rem)]"
+          className="display display-xl mt-6 max-w-[16ch] text-[clamp(2.3rem,1.5rem+3vw,4.4rem)]"
           data-reveal
           style={{ ["--delay" as string]: "80ms" }}
         >

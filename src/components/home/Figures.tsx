@@ -68,7 +68,7 @@ export default function Figures({ copy }: { copy: Copy }) {
               <span data-to={figure.value}>{figure.value}</span>
               {figure.suffix && <span className="text-gold/70">{figure.suffix}</span>}
             </dt>
-            <dd className="mono mt-4 text-[0.66rem] leading-5 tracking-[0.2em] text-sand uppercase">
+            <dd className="label mt-4 text-[0.66rem] leading-5 tracking-[0.2em] text-sand uppercase">
               {figure.label}
             </dd>
           </div>

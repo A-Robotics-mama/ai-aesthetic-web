@@ -39,7 +39,7 @@ export default function Method({ copy }: { copy: Copy }) {
               style={{ ["--delay" as string]: `${index * 110}ms` }}
             >
               <div className="flex items-baseline justify-between">
-                <span className="mono text-[0.7rem] tracking-[0.3em] text-gold">
+                <span className="label text-[0.7rem] tracking-[0.3em] text-gold">
                   {String(index + 1).padStart(2, "0")}
                 </span>
                 <span
@@ -63,7 +63,7 @@ export default function Method({ copy }: { copy: Copy }) {
               <h3 className="display mt-7 text-2xl">{step.title}</h3>
 
               {step.meta && (
-                <p className="mono mt-2 text-[0.63rem] tracking-[0.2em] text-gold/80 uppercase">
+                <p className="label mt-2 text-[0.63rem] tracking-[0.2em] text-gold/80 uppercase">
                   {step.meta}
                 </p>
               )}

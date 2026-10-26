@@ -1,61 +1,28 @@
 import type { Metadata, Viewport } from "next";
-import {
-  Bodoni_Moda,
-  IBM_Plex_Mono,
-  Jost,
-  Azeret_Mono,
-  Playfair_Display,
-} from "next/font/google";
+import { Jost } from "next/font/google";
 import { CLINIC, COMPANY } from "@/constants/company";
 import "./globals.css";
 
 /**
- * Three faces, each with a job.
+ * Один шрифт, набранный тихо.
  *
- * Bodoni carries the headlines: a high-contrast serif whose hairlines glow on
- * black, which is the club's ground. Jost sets everything that is read rather
- * than looked at. Azeret Mono is reserved for figures and labels — the page's
- * recurring motif is a measurement, and a measurement is set in a mono face.
+ * Борис, 26.10.2026: «надо поменять шрифт, этот очень наляпистый, смотри как
+ * изящно сделано у Амары». Bodoni и Playfair ушли совсем: дидон с его
+ * волосяными линиями, каплями и курсивом бросается в глаза вместо того, что
+ * им написано. Остался Jost — геометрический гротеск в духе Futura: на
+ * крупном кегле он держит строку тонкой и спокойной, а в мелких прописных с
+ * широким просветом даёт ту самую сдержанность, на которой стоит Amara.
+ * Разница между заголовком и подписью теперь — вес, кегль и разрядка, а не
+ * пятый шрифт.
  *
- * Bodoni и Azeret не покрывают кириллицу, а половина страницы — русская.
- * Поэтому рядом стоят Playfair Display и IBM Plex Mono: браузер подбирает
- * шрифт по глифу, латиница остаётся в Bodoni, а русский текст не падает в
- * системный шрифт, который на каждой машине свой.
+ * Одно семейство на всю страницу ещё и потому, что Jost покрывает латиницу и
+ * кириллицу: русской половине сайта больше не нужен второй шрифт, который
+ * браузер подбирал по глифу.
  */
-const display = Bodoni_Moda({
-  variable: "--font-display",
-  subsets: ["latin"],
-  weight: ["400", "500"],
-  style: ["normal", "italic"],
-  display: "swap",
-});
-
-const body = Jost({
-  variable: "--font-body",
+const sans = Jost({
+  variable: "--font-sans",
   subsets: ["latin", "cyrillic"],
   weight: ["200", "300", "400", "500"],
-  display: "swap",
-});
-
-const displayCyrillic = Playfair_Display({
-  variable: "--font-display-cyrillic",
-  subsets: ["cyrillic"],
-  weight: ["400", "500"],
-  style: ["normal", "italic"],
-  display: "swap",
-});
-
-const monoCyrillic = IBM_Plex_Mono({
-  variable: "--font-mono-cyrillic",
-  subsets: ["cyrillic"],
-  weight: ["300", "400"],
-  display: "swap",
-});
-
-const mono = Azeret_Mono({
-  variable: "--font-mono",
-  subsets: ["latin"],
-  weight: ["300", "400"],
   display: "swap",
 });
 
@@ -97,7 +64,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${display.variable} ${displayCyrillic.variable} ${body.variable} ${mono.variable} ${monoCyrillic.variable} h-full antialiased`}
+      className={`${sans.variable} h-full antialiased`}
     >
       <head>
         {/*

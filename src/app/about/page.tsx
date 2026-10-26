@@ -39,7 +39,7 @@ export default function AboutPage() {
                 data-reveal
                 style={{ ["--delay" as string]: `${index * 70}ms` }}
               >
-                <p className="mono text-[0.62rem] tracking-[0.3em] text-gold">
+                <p className="label text-[0.62rem] tracking-[0.3em] text-gold">
                   {String(index + 1).padStart(2, "0")} · {step.meta}
                 </p>
                 <h3 className="display mt-3 text-xl">{step.title}</h3>
@@ -63,7 +63,7 @@ export default function AboutPage() {
           <dl className="mt-10 grid gap-px overflow-hidden rounded-xl bg-gold/15 sm:grid-cols-2">
             {copy.place.facts.map((fact) => (
               <div key={fact.k} className="bg-ink p-5" data-reveal>
-                <dt className="mono text-[0.58rem] tracking-[0.24em] text-gold uppercase">
+                <dt className="label text-[0.58rem] tracking-[0.24em] text-gold uppercase">
                   {fact.k}
                 </dt>
                 <dd className="mt-2 text-[0.95rem] leading-6 text-bone/75">{fact.v}</dd>

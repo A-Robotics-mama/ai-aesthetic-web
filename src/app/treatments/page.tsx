@@ -43,7 +43,7 @@ export default function TreatmentsPage() {
             <h2 className="display mt-6 text-2xl">{item.title}</h2>
 
             {item.meta && (
-              <p className="mono mt-2 text-[0.6rem] tracking-[0.2em] text-gold uppercase">
+              <p className="label mt-2 text-[0.6rem] tracking-[0.2em] text-gold uppercase">
                 {item.meta}
               </p>
             )}

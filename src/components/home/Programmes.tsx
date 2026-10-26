@@ -59,7 +59,7 @@ export default function Programmes({ copy }: { copy: Copy }) {
           </div>
 
           <div className="flex items-center gap-4" data-reveal>
-            <span className="mono text-[0.62rem] tracking-[0.3em] text-sand uppercase">
+            <span className="label text-[0.62rem] tracking-[0.3em] text-sand uppercase">
               {copy.programmes.drag}
             </span>
             <span aria-hidden className="text-gold/50">
@@ -102,7 +102,7 @@ export default function Programmes({ copy }: { copy: Copy }) {
               <div className="absolute inset-x-6 bottom-6">
                 <h3 className="display text-[1.7rem]">{item.title}</h3>
                 {item.meta && (
-                  <p className="mono mt-2 text-[0.6rem] tracking-[0.2em] text-gold uppercase">
+                  <p className="label mt-2 text-[0.6rem] tracking-[0.2em] text-gold uppercase">
                     {item.meta}
                   </p>
                 )}

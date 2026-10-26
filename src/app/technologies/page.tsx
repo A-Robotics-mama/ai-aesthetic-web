@@ -35,13 +35,13 @@ export default function TechnologiesPage() {
             data-reveal
             style={{ ["--delay" as string]: `${index * 60}ms` }}
           >
-            <span className="mono text-[0.62rem] text-gold/60">
+            <span className="label text-[0.62rem] text-gold/60">
               {String(index + 1).padStart(2, "0")}
             </span>
 
             <div>
               <h2 className="display text-[1.6rem]">{item.title}</h2>
-              <p className="mono mt-2 text-[0.58rem] tracking-[0.2em] text-sand uppercase">
+              <p className="label mt-2 text-[0.58rem] tracking-[0.2em] text-sand uppercase">
                 {item.meta}
               </p>
             </div>
@@ -53,7 +53,7 @@ export default function TechnologiesPage() {
 
       <h2 className="eyebrow mt-16">{copy.marqueeNote}</h2>
 
-      <p className="mono mt-5 max-w-4xl text-[0.78rem] leading-8 tracking-[0.14em] text-sand uppercase">
+      <p className="label mt-5 max-w-4xl text-[0.78rem] leading-8 tracking-[0.14em] text-sand uppercase">
         {PARK.join(" · ")}
       </p>
 

@@ -20,10 +20,9 @@
   --color-bone: #f3eee5;
   --color-sand: #a79c8a;
 
-  --font-display: var(--font-display), var(--font-display-cyrillic), "Didot", Georgia,
-    serif;
-  --font-body: var(--font-body), "Helvetica Neue", Arial, sans-serif;
-  --font-mono: var(--font-mono), var(--font-mono-cyrillic), ui-monospace, monospace;
+  /* Одно семейство: заголовок от подписи отличают вес, кегль и разрядка. */
+  --font-display: var(--font-sans), "Helvetica Neue", Arial, sans-serif;
+  --font-body: var(--font-sans), "Helvetica Neue", Arial, sans-serif;
 }
 
 :root {
@@ -72,18 +71,29 @@ body {
 @layer components {
 /* ---------------------------------------------------------------- type --- */
 
+/*
+ * Заголовок: тонкое начертание на крупном кегле. Строки стоят просторнее,
+ * чем у дидона, — тонкая буква не терпит тесноты, иначе слово сливается в
+ * серую полосу.
+ */
 .display {
   font-family: var(--font-display);
-  font-weight: 400;
-  line-height: 0.94;
-  letter-spacing: -0.022em;
+  font-weight: 300;
+  line-height: 1.08;
+  letter-spacing: 0.004em;
   text-wrap: balance;
 }
 
+/* Крупнее 3rem волосяное начертание уже держит строку само. */
+.display-xl {
+  font-weight: 200;
+  letter-spacing: 0.012em;
+}
+
 .eyebrow {
-  font-family: var(--font-mono);
-  font-size: 0.6875rem;
-  letter-spacing: 0.3em;
+  font-weight: 400;
+  font-size: 0.66rem;
+  letter-spacing: 0.34em;
   text-transform: uppercase;
   color: var(--color-gold);
 }
@@ -95,8 +105,14 @@ body {
   max-width: 34em;
 }
 
-.mono {
-  font-family: var(--font-mono);
+/*
+ * Подпись: те же прописные с широкой разрядкой, что в меню. Моноширинного
+ * шрифта на странице больше нет — на мелком кегле он и читался как машинка,
+ * а не как подпись под снимком. Вес на ступень выше основного текста:
+ * иначе 10-й кегль светлого начертания на чёрном просто пропадает.
+ */
+.label {
+  font-weight: 400;
   font-variant-numeric: tabular-nums;
 }
 
@@ -229,7 +245,7 @@ body {
   font-size: 0.78rem;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  font-family: var(--font-mono);
+  font-weight: 400;
   border-radius: 999px;
   /* «BOOK A CONSULTATION» ломалось на две строки, когда столбец сужался:
      кнопка переносится целиком или не переносится вовсе. */
@@ -263,6 +279,8 @@ body {
 /* A figure from the club's own records, set like an instrument reading. */
 .figure {
   font-family: var(--font-display);
+  font-weight: 200;
+  letter-spacing: 0.01em;
   font-size: clamp(3rem, 2rem + 5vw, 6rem);
   line-height: 1;
   color: var(--color-gold-soft);

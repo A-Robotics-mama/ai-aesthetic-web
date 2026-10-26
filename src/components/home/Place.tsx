@@ -43,7 +43,7 @@ export default function Place({ copy }: { copy: Copy }) {
             <dl className="mt-12 grid gap-px overflow-hidden rounded-xl bg-gold/15 sm:grid-cols-2">
               {copy.place.facts.map((fact) => (
                 <div key={fact.k} className="bg-ink p-5" data-reveal>
-                  <dt className="mono text-[0.58rem] tracking-[0.24em] text-gold uppercase">
+                  <dt className="label text-[0.58rem] tracking-[0.24em] text-gold uppercase">
                     {fact.k}
                   </dt>
                   <dd className="mt-2 text-[0.95rem] leading-6 text-bone/75">{fact.v}</dd>
@@ -80,7 +80,7 @@ export default function Place({ copy }: { copy: Copy }) {
                 <source src={CLIPS.place.mp4} type="video/mp4" />
               </video>
               <div className="card-shade pointer-events-none absolute inset-x-0 bottom-0 h-1/3" />
-              <figcaption className="mono absolute bottom-4 left-5 text-[0.6rem] tracking-[0.22em] text-bone/70 uppercase">
+              <figcaption className="label absolute bottom-4 left-5 text-[0.6rem] tracking-[0.22em] text-bone/70 uppercase">
                 Dream Tower · 60s
               </figcaption>
             </figure>
@@ -100,7 +100,7 @@ export default function Place({ copy }: { copy: Copy }) {
                     className="aspect-[4/5] w-full object-cover transition-transform duration-[1400ms] group-hover:scale-105"
                   />
                   <div className="card-shade pointer-events-none absolute inset-x-0 bottom-0 h-2/3" />
-                  <figcaption className="mono absolute bottom-3 left-4 text-[0.55rem] tracking-[0.2em] text-bone/70 uppercase">
+                  <figcaption className="label absolute bottom-3 left-4 text-[0.55rem] tracking-[0.2em] text-bone/70 uppercase">
                     {shot.text}
                   </figcaption>
                 </figure>

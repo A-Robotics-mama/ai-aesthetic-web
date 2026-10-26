@@ -18,7 +18,7 @@ export default function SiteFooter() {
         <div className="flex flex-col gap-12 md:flex-row md:justify-between">
           <div>
             <p className="display text-2xl text-bone">{CLINIC.name}</p>
-            <div className="mono mt-4 space-y-1 text-[0.7rem] leading-6 tracking-[0.12em] text-sand uppercase">
+            <div className="label mt-4 space-y-1 text-[0.7rem] leading-6 tracking-[0.12em] text-sand uppercase">
               {CLINIC.address.lines.map((line) => (
                 <p key={line}>{line}</p>
               ))}
@@ -33,7 +33,7 @@ export default function SiteFooter() {
               old link must still find their way around. */}
           <nav
             aria-label="The club"
-            className="mono flex flex-col gap-3 text-[0.7rem] tracking-[0.16em] uppercase"
+            className="label flex flex-col gap-3 text-[0.7rem] tracking-[0.16em] uppercase"
           >
             <Link href="/about" className="text-sand transition-colors hover:text-gold">
               About
@@ -49,7 +49,7 @@ export default function SiteFooter() {
             </Link>
           </nav>
 
-          <nav aria-label="Legal" className="mono flex flex-col gap-3 text-[0.7rem] tracking-[0.16em] uppercase">
+          <nav aria-label="Legal" className="label flex flex-col gap-3 text-[0.7rem] tracking-[0.16em] uppercase">
             <Link href="/privacy-policy" className="text-sand transition-colors hover:text-gold">
               Privacy Policy
             </Link>
@@ -64,7 +64,7 @@ export default function SiteFooter() {
             </Link>
           </nav>
 
-          <div className="mono max-w-xs text-[0.7rem] leading-6 tracking-[0.12em] uppercase">
+          <div className="label max-w-xs text-[0.7rem] leading-6 tracking-[0.12em] uppercase">
             <a
               href={`mailto:${CONTACTS.clinic.email}`}
               className="text-sand transition-colors hover:text-gold"

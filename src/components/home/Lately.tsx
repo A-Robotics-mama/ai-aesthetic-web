@@ -28,7 +28,7 @@ export default function Lately({ copy }: { copy: Copy }) {
           href={INSTAGRAM.url}
           target="_blank"
           rel="noreferrer"
-          className="mono text-[0.64rem] tracking-[0.24em] text-gold uppercase transition-colors hover:text-gold-soft"
+          className="label text-[0.64rem] tracking-[0.24em] text-gold uppercase transition-colors hover:text-gold-soft"
           data-reveal
         >
           {copy.social.cta} ↗
