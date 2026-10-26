@@ -21,7 +21,7 @@ export default function Constellation() {
     if (!paper) return;
 
     const still = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const dots = Array.from({ length: 46 }, () => ({
+    const dots = Array.from({ length: 26 }, () => ({
       x: Math.random(),
       y: Math.random(),
       dx: (Math.random() - 0.5) * 0.00018,
@@ -64,9 +64,9 @@ export default function Constellation() {
           const by = dots[j].y * height;
           const gap = Math.hypot(ax - bx, ay - by);
 
-          if (gap > 170) continue;
+          if (gap > 132) continue;
 
-          paper.strokeStyle = `rgba(200, 164, 93, ${0.16 * (1 - gap / 170)})`;
+          paper.strokeStyle = `rgba(200, 164, 93, ${0.1 * (1 - gap / 132)})`;
           paper.lineWidth = 1;
           paper.beginPath();
           paper.moveTo(ax, ay);
@@ -76,7 +76,7 @@ export default function Constellation() {
       }
 
       for (const dot of dots) {
-        paper.fillStyle = "rgba(233, 212, 163, 0.5)";
+        paper.fillStyle = "rgba(233, 212, 163, 0.32)";
         paper.beginPath();
         paper.arc(dot.x * width, dot.y * height, dot.r, 0, Math.PI * 2);
         paper.fill();

@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Constellation from "@/components/home/Constellation";
-import { CLIPS, PARK } from "@/site/media";
+import { PARK } from "@/site/media";
 import type { Copy, Lang } from "@/site/content";
 
 /**
@@ -40,14 +40,14 @@ export default function Hero({ copy, lang }: { copy: Copy; lang: Lang }) {
         }}
       />
 
-      <div className="shell relative grid items-end gap-14 pb-10 lg:grid-cols-[1.12fr_0.88fr] lg:gap-16 lg:pb-16">
+      <div className="shell relative grid items-center gap-12 pb-10 lg:grid-cols-2 lg:gap-14 lg:pb-16">
         <div>
           <p className="eyebrow" data-reveal>
             {copy.hero.eyebrow}
           </p>
 
           <h1
-            className={`display mt-7 text-[clamp(2.9rem,1.6rem+6.4vw,7.2rem)] ${
+            className={`display mt-7 text-[clamp(2.6rem,1.1rem+4.1vw,6.2rem)] ${
               lit ? "is-lit" : ""
             }`}
           >
@@ -74,7 +74,7 @@ export default function Hero({ copy, lang }: { copy: Copy; lang: Lang }) {
           </p>
 
           <div
-            className="mt-11 flex flex-col gap-3 sm:flex-row"
+            className="mt-11 flex flex-wrap gap-3"
             data-reveal
             style={{ ["--delay" as string]: "850ms" }}
           >
@@ -97,54 +97,21 @@ export default function Hero({ copy, lang }: { copy: Copy; lang: Lang }) {
           </div>
         </div>
 
-        {/* The loop is a real protocol in the Face Room, shot by the club. It
-            is muted, short and decorative, so it may autoplay. */}
-        <figure className="relative flex flex-col items-end gap-7">
-          {/* Борис, 26.10.2026: «я бы добавил лого клуба справа от надписи, а
-              то место выглядит пустым». Знак встал над окном с видео — в ту
-              самую полосу справа от заголовка, которая пустовала. Крупно он
-              там и нужен: логотип нарисован тонкими линиями платы и мельче
-              рассыпается, поэтому на телефоне его здесь нет. */}
+        {/* Борис, 26.10.2026: «лого должно занимать правую половину экрана».
+            Знак нарисован тонкими линиями платы — именно размер и делает его
+            читаемым, а первый экран держится на двух вещах: обещании слева и
+            самом клубе справа. Ролик с процедурой уехал к манифесту. */}
+        <div className="flex justify-center lg:justify-end">
           <img
             src="/media/logo-440.png"
-            alt=""
-            aria-hidden
+            alt="AI Aesthetic Club"
             width={440}
             height={440}
-            className="hidden w-36 object-contain lg:block xl:w-44"
+            className="w-64 max-w-full object-contain sm:w-80 lg:w-full lg:max-w-[36rem]"
             data-reveal
             style={{ ["--delay" as string]: "400ms" }}
           />
-
-          <div
-            className="relative w-full overflow-hidden rounded-[1.75rem] border border-gold/25"
-            data-reveal="mask"
-            style={{ ["--delay" as string]: "500ms" }}
-          >
-            <video
-              className="aspect-[4/5] w-full object-cover sm:aspect-square"
-              poster={CLIPS.hero.poster}
-              autoPlay
-              muted
-              loop
-              playsInline
-              preload="metadata"
-            >
-              <source src={CLIPS.hero.webm} type="video/webm" />
-              <source src={CLIPS.hero.mp4} type="video/mp4" />
-            </video>
-
-            <div className="card-shade pointer-events-none absolute inset-x-0 bottom-0 h-1/3" />
-
-            <figcaption className="absolute inset-x-5 bottom-5 flex items-end justify-between gap-4">
-              <span className="mono text-[0.6rem] leading-5 tracking-[0.22em] text-bone/70 uppercase">
-                {copy.hero.caption}
-              </span>
-              <span className="mono text-[0.6rem] text-gold">●&nbsp;LIVE</span>
-            </figcaption>
-          </div>
-
-        </figure>
+        </div>
       </div>
 
       {/* The park, before anything is claimed about it. */}

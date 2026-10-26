@@ -65,7 +65,7 @@ export default function Place({ copy }: { copy: Copy }) {
           <div className="grid gap-4">
             <figure
               className="relative overflow-hidden rounded-2xl border border-gold/20"
-              data-reveal="mask"
+              data-reveal
             >
               <video
                 className="aspect-[4/3] w-full object-cover"

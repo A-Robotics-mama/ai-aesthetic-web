@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { CLIPS } from "@/site/media";
 import type { Copy } from "@/site/content";
 
 /**
@@ -51,10 +52,11 @@ export default function Manifesto({ copy }: { copy: Copy }) {
 
   return (
     <section className="relative border-b border-gold/15 py-28 lg:py-40">
-      <div className="shell">
-        <p className="eyebrow" data-reveal>
-          {copy.manifesto.eyebrow}
-        </p>
+      <div className="shell grid items-center gap-12 lg:grid-cols-[1.15fr_0.85fr] lg:gap-16">
+        <div>
+          <p className="eyebrow" data-reveal>
+            {copy.manifesto.eyebrow}
+          </p>
 
         <p
           ref={block}
@@ -63,20 +65,51 @@ export default function Manifesto({ copy }: { copy: Copy }) {
              sentence must be readable, not a grey block. */
           style={{ ["--p" as string]: 1 }}
         >
-          {words.map((word, index) => (
-            <span
-              key={`${word}-${index}`}
-              style={{ ["--i" as string]: index / words.length }}
-              className="[opacity:clamp(0.22,calc((var(--p)-var(--i))*7+0.22),1)] transition-opacity duration-300"
-            >
-              {word}{" "}
-            </span>
-          ))}
-        </p>
+            {words.map((word, index) => (
+              <span
+                key={`${word}-${index}`}
+                style={{ ["--i" as string]: index / words.length }}
+                className="[opacity:clamp(0.22,calc((var(--p)-var(--i))*7+0.22),1)] transition-opacity duration-300"
+              >
+                {word}{" "}
+              </span>
+            ))}
+          </p>
 
-        <p className="mono mt-10 text-[0.65rem] tracking-[0.3em] text-sand uppercase" data-reveal>
-          — {copy.manifesto.by}
-        </p>
+          <p
+            className="mono mt-10 text-[0.65rem] tracking-[0.3em] text-sand uppercase"
+            data-reveal
+          >
+            — {copy.manifesto.by}
+          </p>
+        </div>
+
+        {/* Процедура в Face Room, снятая самим клубом. Ролик стоял на первом
+            экране, но там теперь знак, а рядом с этой фразой он и к месту:
+            «начинаем с диагностики» — и тут же руки, которые работают. */}
+        <figure className="relative" data-reveal style={{ ["--delay" as string]: "200ms" }}>
+          <div className="relative overflow-hidden rounded-[1.75rem] border border-gold/25">
+            <video
+              className="aspect-[4/5] w-full object-cover"
+              poster={CLIPS.hero.poster}
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="metadata"
+            >
+              <source src={CLIPS.hero.webm} type="video/webm" />
+              <source src={CLIPS.hero.mp4} type="video/mp4" />
+            </video>
+
+            <div className="card-shade pointer-events-none absolute inset-x-0 bottom-0 h-1/3" />
+
+            <figcaption className="mono absolute inset-x-5 bottom-5 flex items-end justify-between gap-4 text-[0.6rem] leading-5 tracking-[0.22em] text-bone/70 uppercase">
+              <span>{copy.hero.caption}</span>
+              <span className="text-gold">●&nbsp;LIVE</span>
+            </figcaption>
+          </div>
+        </figure>
       </div>
     </section>
   );

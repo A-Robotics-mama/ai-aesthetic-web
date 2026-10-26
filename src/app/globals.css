@@ -178,18 +178,6 @@ body {
   transform: none;
 }
 
-.js [data-reveal="mask"] {
-  opacity: 1;
-  transform: none;
-  clip-path: inset(0 100% 0 0);
-  transition: clip-path 1.4s cubic-bezier(0.22, 0.72, 0.2, 1);
-  transition-delay: var(--delay, 0ms);
-}
-
-.js [data-reveal="mask"].is-in {
-  clip-path: inset(0 0 0 0);
-}
-
 /* The hero headline arrives a word at a time, from under its own baseline. */
 .word {
   display: inline-block;
@@ -230,45 +218,6 @@ body {
   }
 }
 
-/* ------------------------------------------------------------- cursor --- */
-
-.cursor {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 70;
-  width: 2.25rem;
-  height: 2.25rem;
-  margin: -1.125rem 0 0 -1.125rem;
-  border: 1px solid color-mix(in oklab, var(--color-gold) 70%, transparent);
-  border-radius: 999px;
-  pointer-events: none;
-  opacity: 0;
-  transition:
-    opacity 0.3s,
-    width 0.3s,
-    height 0.3s,
-    margin 0.3s,
-    background-color 0.3s;
-}
-
-.cursor.on {
-  opacity: 1;
-}
-
-.cursor.grown {
-  width: 4.5rem;
-  height: 4.5rem;
-  margin: -2.25rem 0 0 -2.25rem;
-  background: color-mix(in oklab, var(--color-gold) 12%, transparent);
-}
-
-@media (pointer: coarse) {
-  .cursor {
-    display: none;
-  }
-}
-
 /* -------------------------------------------------------------- pieces --- */
 
 .btn {
@@ -282,6 +231,9 @@ body {
   text-transform: uppercase;
   font-family: var(--font-mono);
   border-radius: 999px;
+  /* «BOOK A CONSULTATION» ломалось на две строки, когда столбец сужался:
+     кнопка переносится целиком или не переносится вовсе. */
+  white-space: nowrap;
   transition:
     background-color 0.4s,
     color 0.4s,
@@ -440,8 +392,7 @@ body {
     transition-delay: 0s !important;
   }
 
-  .js [data-reveal],
-  .js [data-reveal="mask"] {
+  .js [data-reveal] {
     opacity: 1;
     transform: none;
     clip-path: none;
