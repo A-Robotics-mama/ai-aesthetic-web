@@ -21,6 +21,13 @@ export default function Constellation() {
     if (!paper) return;
 
     const still = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    /* Чем рисовать. Золото по чёрному, по бледно-голубому — приглушённая
+       синева: на светлом фоне золотая линия светлее фона и созвездие
+       пропадает. Цвета заданы токенами, так что читаем их у документа. */
+    const shell = getComputedStyle(document.documentElement);
+    const trace = shell.getPropertyValue("--trace").trim() || "200, 164, 93";
+    const node = shell.getPropertyValue("--node").trim() || "233, 212, 163";
     const dots = Array.from({ length: 26 }, () => ({
       x: Math.random(),
       y: Math.random(),
@@ -66,7 +73,7 @@ export default function Constellation() {
 
           if (gap > 132) continue;
 
-          paper.strokeStyle = `rgba(200, 164, 93, ${0.1 * (1 - gap / 132)})`;
+          paper.strokeStyle = `rgba(${trace}, ${0.1 * (1 - gap / 132)})`;
           paper.lineWidth = 1;
           paper.beginPath();
           paper.moveTo(ax, ay);
@@ -76,7 +83,7 @@ export default function Constellation() {
       }
 
       for (const dot of dots) {
-        paper.fillStyle = "rgba(233, 212, 163, 0.32)";
+        paper.fillStyle = `rgba(${node}, 0.32)`;
         paper.beginPath();
         paper.arc(dot.x * width, dot.y * height, dot.r, 0, Math.PI * 2);
         paper.fill();

@@ -28,7 +28,7 @@ export default function Residence({ copy }: { copy: Copy }) {
         className="absolute inset-0 -z-10"
         style={{
           background:
-            "linear-gradient(180deg, rgba(8,7,6,0.88) 0%, rgba(8,7,6,0.55) 42%, rgba(8,7,6,0.93) 100%)",
+            "linear-gradient(180deg, var(--veil-top) 0%, var(--veil-middle) 42%, var(--veil-bottom) 100%)",
         }}
       />
 

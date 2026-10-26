@@ -19,6 +19,13 @@ import "./globals.css";
  * кириллицу: русской половине сайта больше не нужен второй шрифт, который
  * браузер подбирал по глифу.
  */
+/**
+ * Какой вариант собираем. Тёмный — обычный; светлый включается переменной
+ * окружения на сборке, чтобы на одном коде было два превью и Борис мог
+ * сравнить их рядом.
+ */
+const THEME = process.env.NEXT_PUBLIC_THEME === "light" ? "light" : "dark";
+
 const sans = Jost({
   variable: "--font-sans",
   subsets: ["latin", "cyrillic"],
@@ -52,8 +59,8 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#080706",
-  colorScheme: "dark",
+  themeColor: THEME === "light" ? "#f1f5fb" : "#080706",
+  colorScheme: THEME,
 };
 
 export default function RootLayout({
@@ -64,6 +71,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      data-theme={THEME}
       className={`${sans.variable} h-full antialiased`}
     >
       <head>

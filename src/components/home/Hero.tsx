@@ -36,7 +36,7 @@ export default function Hero({ copy, lang }: { copy: Copy; lang: Lang }) {
         className="pointer-events-none absolute -top-40 -left-32 h-[40rem] w-[40rem] rounded-full opacity-45 blur-3xl"
         style={{
           background:
-            "radial-gradient(circle, rgba(200,164,93,0.28) 0%, rgba(200,164,93,0) 68%)",
+            "radial-gradient(circle, var(--glow-core) 0%, transparent 68%)",
         }}
       />
 
@@ -97,7 +97,11 @@ export default function Hero({ copy, lang }: { copy: Copy; lang: Lang }) {
           </div>
         </div>
 
-        {/* Борис, 26.10.2026: «лого должно занимать правую половину экрана».
+        {/* Борис, 26.10.2026: «лого должно занимать правую половину экрана»,
+            затем «уменьши лого на 20%» — отсюда 80% ширины колонки при
+            потолке в 28,8rem: уменьшается ровно на пятую часть и на его
+            ширине окна, и на большом мониторе, где раньше упиралось в
+            потолок, а не в колонку.
             Знак нарисован тонкими линиями платы — именно размер и делает его
             читаемым, а первый экран держится на двух вещах: обещании слева и
             самом клубе справа. Ролик с процедурой уехал к манифесту. */}
@@ -107,7 +111,7 @@ export default function Hero({ copy, lang }: { copy: Copy; lang: Lang }) {
             alt="AI Aesthetic Club"
             width={440}
             height={440}
-            className="w-64 max-w-full object-contain sm:w-80 lg:w-full lg:max-w-[36rem]"
+            className="mark w-[12.8rem] max-w-full object-contain sm:w-64 lg:w-[80%] lg:max-w-[28.8rem]"
             data-reveal
             style={{ ["--delay" as string]: "400ms" }}
           />

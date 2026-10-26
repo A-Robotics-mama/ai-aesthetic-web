@@ -20,7 +20,7 @@ export default function Contact({ copy }: { copy: Copy }) {
             className="pointer-events-none absolute -top-28 -right-20 h-[26rem] w-[26rem] rounded-full opacity-50 blur-3xl"
             style={{
               background:
-                "radial-gradient(circle, rgba(200,164,93,0.3) 0%, rgba(200,164,93,0) 70%)",
+                "radial-gradient(circle, var(--glow-core) 0%, transparent 70%)",
             }}
           />
 

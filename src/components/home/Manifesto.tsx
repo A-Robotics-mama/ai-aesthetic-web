@@ -104,7 +104,7 @@ export default function Manifesto({ copy }: { copy: Copy }) {
 
             <div className="card-shade pointer-events-none absolute inset-x-0 bottom-0 h-1/3" />
 
-            <figcaption className="label absolute inset-x-5 bottom-5 flex items-end justify-between gap-4 text-[0.6rem] leading-5 tracking-[0.22em] text-bone/70 uppercase">
+            <figcaption className="over-photo label absolute inset-x-5 bottom-5 flex items-end justify-between gap-4 text-[0.6rem] leading-5 tracking-[0.22em] text-bone/70 uppercase">
               <span>{copy.hero.caption}</span>
               <span className="text-gold">●&nbsp;LIVE</span>
             </figcaption>

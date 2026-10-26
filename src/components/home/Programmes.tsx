@@ -99,7 +99,7 @@ export default function Programmes({ copy }: { copy: Copy }) {
               />
               <div className="card-shade pointer-events-none absolute inset-0" />
 
-              <div className="absolute inset-x-6 bottom-6">
+              <div className="over-photo absolute inset-x-6 bottom-6">
                 <h3 className="display text-[1.7rem]">{item.title}</h3>
                 {item.meta && (
                   <p className="label mt-2 text-[0.6rem] tracking-[0.2em] text-gold uppercase">

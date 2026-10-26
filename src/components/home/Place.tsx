@@ -80,7 +80,7 @@ export default function Place({ copy }: { copy: Copy }) {
                 <source src={CLIPS.place.mp4} type="video/mp4" />
               </video>
               <div className="card-shade pointer-events-none absolute inset-x-0 bottom-0 h-1/3" />
-              <figcaption className="label absolute bottom-4 left-5 text-[0.6rem] tracking-[0.22em] text-bone/70 uppercase">
+              <figcaption className="over-photo label absolute bottom-4 left-5 text-[0.6rem] tracking-[0.22em] text-bone/70 uppercase">
                 Dream Tower · 60s
               </figcaption>
             </figure>
@@ -100,7 +100,7 @@ export default function Place({ copy }: { copy: Copy }) {
                     className="aspect-[4/5] w-full object-cover transition-transform duration-[1400ms] group-hover:scale-105"
                   />
                   <div className="card-shade pointer-events-none absolute inset-x-0 bottom-0 h-2/3" />
-                  <figcaption className="label absolute bottom-3 left-4 text-[0.55rem] tracking-[0.2em] text-bone/70 uppercase">
+                  <figcaption className="over-photo label absolute bottom-3 left-4 text-[0.55rem] tracking-[0.2em] text-bone/70 uppercase">
                     {shot.text}
                   </figcaption>
                 </figure>
