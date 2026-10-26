@@ -20,11 +20,13 @@ import "./globals.css";
  * браузер подбирал по глифу.
  */
 /**
- * Какой вариант собираем. Тёмный — обычный; светлый включается переменной
- * окружения на сборке, чтобы на одном коде было два превью и Борис мог
- * сравнить их рядом.
+ * Какой вариант собираем. Тёмный — обычный; светлые включаются переменной
+ * окружения на сборке, чтобы на одном коде было три превью и Борис мог
+ * сравнить их рядом: `light` — бледно-голубой, `ivory` — слоновая кость.
  */
-const THEME = process.env.NEXT_PUBLIC_THEME === "light" ? "light" : "dark";
+const VARIANTS = ["light", "ivory"] as const;
+
+const THEME = VARIANTS.find((one) => one === process.env.NEXT_PUBLIC_THEME) ?? "dark";
 
 const sans = Jost({
   variable: "--font-sans",
@@ -58,9 +60,11 @@ export const metadata: Metadata = {
   },
 };
 
+const GROUND = { dark: "#080706", light: "#f1f5fb", ivory: "#f8f3e7" };
+
 export const viewport: Viewport = {
-  themeColor: THEME === "light" ? "#f1f5fb" : "#080706",
-  colorScheme: THEME,
+  themeColor: GROUND[THEME],
+  colorScheme: THEME === "dark" ? "dark" : "light",
 };
 
 export default function RootLayout({
