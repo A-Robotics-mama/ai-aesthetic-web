@@ -25,15 +25,6 @@ export const IMAGES: Record<string, string> = {
   "prog-longevity": "/media/prog-longevity.webp",
   "prog-rituals": "/media/prog-rituals.webp",
 
-  "tech-isemeco": "/media/step-diagnostics.webp",
-  "tech-visbody": "/media/accent-model.webp",
-  "tech-ona": "/media/tech-ona.webp",
-  "tech-reverso": "/media/step-technology.webp",
-  "tech-icoone": "/media/tech-icoone.webp",
-  "tech-stellar": "/media/tech-stellar.webp",
-  "tech-lightsheer": "/media/prog-laser.webp",
-  "tech-cryo": "/media/tech-room.webp",
-
   "place-tower": "/media/place-tower.webp",
   "place-lounge": "/media/place-lounge.webp",
   "place-robes": "/media/place-robes.webp",
@@ -52,6 +43,81 @@ export const IMAGES: Record<string, string> = {
   "accent-scent": "/media/accent-scent.webp",
   "accent-serum": "/media/accent-serum.webp",
   "accent-swatch": "/media/accent-swatch.webp",
+};
+
+/**
+ * Снимки по аппаратам: ключ — `id` записи в `technology.devices`, значение —
+ * порядок кадров в показе. Первым всегда идёт сам аппарат, дальше — работа.
+ *
+ * Борис, 26.10.2026: «надо скачать и использовать этот видеоряд и все
+ * следующие» — кадры сняты со страниц производителей по его списку ссылок,
+ * приведены к 4:3 и пережаты в webp. Своих фотографий аппаратов у клуба пока
+ * нет; как появятся, сюда подставляются они.
+ */
+export const DEVICE_SHOTS: Record<string, readonly string[]> = {
+  "tech-isemeco": [
+    "/media/dev/tech-isemeco-1.webp",
+    "/media/dev/tech-isemeco-2.webp",
+    "/media/dev/tech-isemeco-3.webp",
+  ],
+  "tech-visbody": [
+    "/media/dev/tech-visbody-1.webp",
+    "/media/dev/tech-visbody-2.webp",
+    "/media/dev/tech-visbody-3.webp",
+    "/media/dev/tech-visbody-4.webp",
+  ],
+  "tech-ona": [
+    "/media/dev/tech-ona-1.webp",
+    "/media/dev/tech-ona-2.webp",
+    "/media/dev/tech-ona-3.webp",
+    "/media/dev/tech-ona-4.webp",
+  ],
+  "tech-elite": [
+    "/media/dev/tech-elite-1.webp",
+    "/media/dev/tech-elite-2.webp",
+    "/media/dev/tech-elite-3.webp",
+  ],
+  "tech-reverso": [
+    "/media/dev/tech-reverso-1.webp",
+    "/media/dev/tech-reverso-2.webp",
+    "/media/dev/tech-reverso-3.webp",
+  ],
+  "tech-icoone": [
+    "/media/dev/tech-icoone-1.webp",
+    "/media/dev/tech-icoone-2.webp",
+    "/media/dev/tech-icoone-3.webp",
+    "/media/dev/tech-icoone-4.webp",
+    "/media/dev/tech-icoone-5.webp",
+  ],
+  "tech-quattro": [
+    "/media/dev/tech-quattro-1.webp",
+    "/media/dev/tech-quattro-2.webp",
+    "/media/dev/tech-quattro-3.webp",
+  ],
+  "tech-ipl": [
+    "/media/dev/tech-ipl-1.webp",
+    "/media/dev/tech-ipl-2.webp",
+    "/media/dev/tech-ipl-3.webp",
+  ],
+  "tech-resurfx": [
+    "/media/dev/tech-resurfx-1.webp",
+    "/media/dev/tech-resurfx-2.webp",
+  ],
+  "tech-cryoskin": [
+    "/media/dev/tech-cryoskin-1.webp",
+    "/media/dev/tech-cryoskin-2.webp",
+    "/media/dev/tech-cryoskin-3.webp",
+  ],
+  "tech-vip": [
+    "/media/dev/tech-vip-1.webp",
+    "/media/dev/tech-vip-2.webp",
+    "/media/dev/tech-vip-3.webp",
+  ],
+  "tech-oxygenium": [
+    "/media/dev/tech-oxygenium-1.webp",
+    "/media/dev/tech-oxygenium-2.webp",
+    "/media/dev/tech-oxygenium-3.webp",
+  ],
 };
 
 /** The vertical loop in the hero, and the walk-through in the club block. */

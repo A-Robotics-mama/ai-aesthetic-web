@@ -24,6 +24,26 @@ export type Entry = {
   meta?: string;
 };
 
+/**
+ * Один аппарат парка: чем он является, что в нём главное и где об этом
+ * написано у производителя. `id` совпадает с ключом в DEVICE_SHOTS, так что
+ * обе языковые версии показывают одни и те же снимки.
+ */
+export type Device = {
+  id: string;
+  title: string;
+  /** Производитель — он же надзаголовок над именем. */
+  brand: string;
+  /** Что это за машина: анализ кожи, диодный лазер, фракционный RF. */
+  group: string;
+  /** Одна фраза: чем этот аппарат отличается от соседнего. */
+  lede: string;
+  /** Три-четыре главных свойства — фактами, а не обещаниями. */
+  aspects: string[];
+  /** Страница производителя: читателю есть куда проверить. */
+  href: string;
+};
+
 export type Copy = {
   langLabel: string;
   nav: { href: string; label: string }[];
@@ -49,7 +69,17 @@ export type Copy = {
     note: string;
     drag: string;
   };
-  technology: { eyebrow: string; title: string; lede: string; items: Entry[] };
+  technology: {
+    eyebrow: string;
+    title: string;
+    lede: string;
+    /** Подпись над полным списком парка. */
+    listLabel: string;
+    maker: string;
+    prev: string;
+    next: string;
+    devices: Device[];
+  };
   place: {
     eyebrow: string;
     title: string;
@@ -205,65 +235,194 @@ const EN: Copy = {
   },
   technology: {
     eyebrow: "Technology",
-    title: "Chosen on merit, replaced without sentiment.",
+    title: "Twelve platforms, and what each one is actually for.",
     lede:
-      "The park is listed in full. Hover a platform to see what it is for — and what it is not.",
-    items: [
+      "The park in full, as it stands in the club's own register — one machine at a time, with the three or four things that matter about it. Every name below is a device you can be treated on this week.",
+    listLabel: "The park in full",
+    maker: "At the manufacturer",
+    prev: "Previous platform",
+    next: "Next platform",
+    devices: [
       {
         id: "tech-isemeco",
         title: "ISEMECO 3D D9",
-        meta: "Skin analysis",
-        text:
-          "Photographs the face in several light spectra and returns figures for hydration, pores, pigment and wrinkle depth. Every programme starts here, which is why there is no package to buy before the scan.",
+        brand: "Meicet",
+        group: "Skin analysis",
+        lede:
+          "The scan every programme opens with: the face photographed in a dozen light spectra and modelled in three dimensions, so the protocol is written against readings rather than against an impression.",
+        aspects: [
+          "Twelve high-definition full-face images — RGB, polarised, cross-polarised, UV, brown, red and monochrome.",
+          "Over thirty measured dimensions, each graded mild, moderate or severe instead of merely described.",
+          "A deep-learning ageing index across eight features, from forehead lines to brown spots.",
+          "3D modelling that reads a change in facial volume down to 0.1 ml, which is what makes a before and an after comparable.",
+        ],
+        href:
+          "https://www.meicet.com/isemeco-3d-d9-skin-analyzer-3d-full-facial-modeling-suitable-for-doctors-cosmetic-surgeons-dermatologists-product/",
       },
       {
         id: "tech-visbody",
-        title: "Visbody",
-        meta: "Body scan",
-        text:
-          "A contactless scan of composition, posture and circumference. Repeated at intervals, it is what turns «I feel better» into a number.",
+        title: "Visbody M30",
+        brand: "Visbody",
+        group: "Body analysis",
+        lede:
+          "A contactless body scan: no electrodes, no tape measure. A 3D model you can turn, and the figures that come off it.",
+        aspects: [
+          "Thirteen circumferences measured by depth camera rather than by hand.",
+          "A nine-point static posture assessment built on 3D skeletal detection.",
+          "Up to eight earlier scans kept side by side as before-and-after avatars.",
+          "Four result sheets: composition, shape, posture, circumference.",
+        ],
+        href: "https://visbody.com/visbody-m30/",
       },
       {
         id: "tech-ona",
-        title: "INDIBA ONA · Elite NS",
-        meta: "Proionic 448 kHz",
-        text:
-          "Proionic current at 448 kHz working at the level of cell metabolism: drainage, recovery after procedures, and the preparation most protocols open with.",
+        title: "INDIBA ONA",
+        brand: "INDIBA",
+        group: "Facial platform",
+        lede:
+          "Four technologies in one facial — hydrodermabrasion, electroporation, LED and low-frequency current — run in a fixed order rather than picked one at a time.",
+        aspects: [
+          "A double peel: AHA and BHA solutions delivered under pressure, then drawn off by a radial tip at 15 to 80 kPa.",
+          "Electroporation carries the serum five millimetres down, through pores held open by high-voltage pulses.",
+          "Modulated 1 kHz current contracts and releases the facial muscle under control.",
+          "Blue, red and violet LED on the same pass as the infusion.",
+        ],
+        href: "https://indiba.com/products/ona/",
+      },
+      {
+        id: "tech-elite",
+        title: "INDIBA Elite NS",
+        brand: "INDIBA",
+        group: "Radiofrequency · 448 kHz",
+        lede:
+          "Monopolar radiofrequency at 448 kHz — the one frequency the whole INDIBA method is built on, and the device most protocols here open and close with.",
+        aspects: [
+          "Capacitive and resistive electrodes: surface tissue or deep, chosen by what is being treated rather than by programme.",
+          "Worked at three thermal levels, including one below the sensation of heat, for tissue that is still inflamed.",
+          "One device across recovery, fat mobilisation and tissue repair.",
+          "Used after surgery and after injectables — oedema, haematoma, scars.",
+        ],
+        href: "https://indiba.com/products/elite-ns/",
       },
       {
         id: "tech-reverso",
         title: "INDIBA Reverso",
-        meta: "Fractional RF",
-        text:
-          "Radiofrequency delivered into the dermis to remodel scars, stretch marks and texture. It works with the quality of the skin rather than with its appearance.",
+        brand: "INDIBA",
+        group: "Fractional radiofrequency",
+        lede:
+          "Fractional resurfacing where the shape of the pulse, not just its strength, is chosen for the skin in front of it.",
+        aspects: [
+          "Four pulse profiles — flat, super, double and double-speed scan — from thin, sensitive skin to deep scar work.",
+          "Three energy patterns: the full grid, half the pins, or alternating lines for tightening in one direction.",
+          "Fine wrinkles, acne and surgical scars, white and red stretch marks, enlarged pores.",
+          "Also used post-operatively, where what is being treated is the inflammation and the pain.",
+        ],
+        href: "https://indiba.com/products/reverso/",
       },
       {
         id: "tech-icoone",
-        title: "icoone Laser Med & Body",
-        meta: "Roboderm® microstimulation",
-        text:
-          "Thousands of micro-stimulations a minute across two machines: lymphatic drainage, fibrosis, tone. Forty-six programmes in four families — medical, aesthetic, wellness and men's.",
+        title: "icoone Laser Med",
+        brand: "icoone",
+        group: "Microstimulation",
+        lede:
+          "Roboderm® microstimulation: independently motorised rollers that lift and release the tissue without suction — which is why it can be repeated daily and does not bruise.",
+        aspects: [
+          "21,600 microstimulations a minute, the figure the technology is named for.",
+          "No vacuum: the handpiece glides, so even thin and sensitive skin takes it painlessly.",
+          "LED and laser diodes in the handpieces, working on the same pass as the massage.",
+          "Forty-six programmes in the club's book — medical, aesthetic, wellness and men's.",
+        ],
+        href: "https://icoone.com/en/treatments-aesthetic-body/",
       },
       {
-        id: "tech-stellar",
-        title: "Lumenis Stellar M22",
-        meta: "IPL · ResurFX",
-        text:
-          "One platform, several applications: IPL for pigment and vessels, ResurFX for non-ablative resurfacing. Settings are chosen per phototype, not per price list.",
+        id: "tech-quattro",
+        title: "LightSheer QUATTRO",
+        brand: "Lumenis",
+        group: "Diode laser",
+        lede:
+          "Two wavelengths and three handpieces, so the setting follows the hair and the skin in front of it — tanned and dark skin included.",
+        aspects: [
+          "805 nm and 1060 nm on one platform: every skin type, not a safe middle for all of them.",
+          "The High Speed handpiece, 22×35 mm, vacuum-assisted — lower fluence per pulse, no gel, large areas quickly.",
+          "ChillTip XC at 12×12 mm and ET at 9×9 mm, with continuous sapphire contact cooling for precision work.",
+          "Pigmented and vascular lesions treated on the same machine.",
+        ],
+        href: "https://lumenis.com/aesthetics/products/lightsheer/",
       },
       {
-        id: "tech-lightsheer",
-        title: "LightSheer Quattro",
-        meta: "Diode laser",
-        text:
-          "Four handpieces for hair removal, from a small handpiece for the face to a large one for legs — thirty-two protocols by zone.",
+        id: "tech-ipl",
+        title: "Stellar M22 · IPL",
+        brand: "Lumenis",
+        group: "Intense pulsed light",
+        lede:
+          "Broad-spectrum light from 400 to 1200 nm, filtered down to the target before it ever reaches the skin.",
+        aspects: [
+          "Nine Expert Filters in one universal handpiece: the cut-off changes per condition, not the machine.",
+          "Optimal Pulse Technology holds the shape of the pulse, which is what makes a session repeatable.",
+          "Vascular and pigmented lesions, photoageing, and hair.",
+          "The applicator is cooled continuously while it sits against the skin.",
+        ],
+        href: "https://lumenis.com/aesthetics/products/m22/ipl/",
       },
       {
-        id: "tech-cryo",
-        title: "CryoSkin · VIP Hi-Line · Oxygenium",
-        meta: "Contour · muscle · oxygen",
-        text:
-          "Controlled heat and cold for contour, muscle stimulation for relief, oxygen care for recovery. The supporting cast of a body programme.",
+        id: "tech-resurfx",
+        title: "Stellar M22 · ResurFX",
+        brand: "Lumenis",
+        group: "Non-ablative fractional",
+        lede:
+          "The 1565 nm fibre module of the same platform — the only true non-ablative fractional technology, and one pass is all it takes.",
+        aspects: [
+          "CoolScan places each fractional spot out of sequence, so heat does not accumulate in the tissue.",
+          "More than 600 combinations of shape, size and density to choose from.",
+          "One pass instead of several: less time on the skin, and less of it asked of the epidermis.",
+          "Continuous contact cooling inside the handpiece throughout.",
+        ],
+        href: "https://lumenis.com/aesthetics/products/m22/resurfx/",
+      },
+      {
+        id: "tech-cryoskin",
+        title: "CryoSkin",
+        brand: "CryoSkin · Paris",
+        group: "Cryotherapy",
+        lede:
+          "Thermal shock in a single session: the tissue warmed, then taken down to cold — with no nitrogen and no suction anywhere in the process.",
+        aspects: [
+          "Fully electric. No gas cylinder, so the temperature is held and read rather than sprayed.",
+          "Suction-free: the handpiece glides, and nothing is drawn up into it.",
+          "Slimming, firming and facial contouring from one handpiece.",
+          "Designed and built in France, where the technology was invented in 2013.",
+        ],
+        href: "https://cryoskin-international.com/",
+      },
+      {
+        id: "tech-vip",
+        title: "VIP Hi-Line",
+        brand: "VIP Italia",
+        group: "Electrostimulation",
+        lede:
+          "Neuromuscular stimulation from a house that has done nothing but muscle since 1971 — it works the muscle, not the fat above it.",
+        aspects: [
+          "Programmes for tone, definition and recovery, set per muscle group.",
+          "Non-invasive electro-lymphatic drainage on the same unit.",
+          "Isometric work and microcurrent for the face.",
+          "Hands-free: the pads do the work while the client lies still.",
+        ],
+        href: "https://vipitalia.com/treatments/",
+      },
+      {
+        id: "tech-oxygenium",
+        title: "Oxygenium",
+        brand: "Fabbrimarine",
+        group: "Oxygen care",
+        lede:
+          "Oxygen therapy for the face, run on Italian marine cosmetics rather than on a generic gel — the gentlest thing in the park, and the one that most often closes a session.",
+        aspects: [
+          "Marine actives from a house that has formulated from the sea for over fifty years, out of Bologna.",
+          "Formulated for sensitive, reactive and compromised skin, where a peel would be too much.",
+          "Protocols written to follow radiofrequency, light and vacuum work, not to replace it.",
+          "Preparation, intensive phase and finish — the whole protocol from one house.",
+        ],
+        href: "https://fabbrimarine.ae/",
       },
     ],
   },
@@ -468,65 +627,194 @@ const RU: Copy = {
   },
   technology: {
     eyebrow: "Технологии",
-    title: "Выбираем по делу, меняем без сожалений.",
+    title: "Двенадцать платформ — и что каждая делает на самом деле.",
     lede:
-      "Парк перечислен полностью. Наведите на платформу — увидите, для чего она и для чего нет.",
-    items: [
+      "Весь парк, как он записан в журнале клуба: по одному аппарату на кадр и три-четыре главных факта о нём. Каждое имя в списке — машина, на которой можно записаться на этой неделе.",
+    listLabel: "Весь парк",
+    maker: "У производителя",
+    prev: "Предыдущая платформа",
+    next: "Следующая платформа",
+    devices: [
       {
         id: "tech-isemeco",
         title: "ISEMECO 3D D9",
-        meta: "Анализ кожи",
-        text:
-          "Снимает лицо в нескольких спектрах света и отдаёт цифры по увлажнённости, порам, пигменту и глубине морщин. С него начинается любая программа — поэтому у нас нельзя купить курс до снимка.",
+        brand: "Meicet",
+        group: "Анализ кожи",
+        lede:
+          "Снимок, с которого начинается любая программа: лицо снято в дюжине спектров света и собрано в объёме — протокол пишется по показаниям, а не по впечатлению.",
+        aspects: [
+          "Двенадцать снимков лица в высоком разрешении — RGB, поляризованный и кросс-поляризованный свет, UV, пигмент, краснота, монохром.",
+          "Больше тридцати измеряемых признаков, и каждый не описан словами, а отнесён к лёгкой, средней или выраженной степени.",
+          "Индекс старения по восьми зонам — от морщин лба до пигментных пятен, — посчитанный обученной моделью.",
+          "Объёмная модель читает изменение объёма лица до 0,1 мл: именно это и позволяет сравнить «до» и «после».",
+        ],
+        href:
+          "https://www.meicet.com/isemeco-3d-d9-skin-analyzer-3d-full-facial-modeling-suitable-for-doctors-cosmetic-surgeons-dermatologists-product/",
       },
       {
         id: "tech-visbody",
-        title: "Visbody",
-        meta: "Анализ тела",
-        text:
-          "Бесконтактный анализ состава, осанки и объёмов. При повторе именно он превращает «мне стало лучше» в число.",
+        title: "Visbody M30",
+        brand: "Visbody",
+        group: "Анализ тела",
+        lede:
+          "Бесконтактный анализ тела: ни электродов, ни сантиметровой ленты. Объёмная модель, которую можно повернуть, и цифры, снятые с неё.",
+        aspects: [
+          "Тринадцать обхватов, снятых камерами глубины, а не руками.",
+          "Оценка осанки по девяти точкам — по объёмной модели скелета.",
+          "До восьми прежних замеров рядом, в виде фигур «до» и «после».",
+          "Четыре листа результата: состав, форма, осанка, обхваты.",
+        ],
+        href: "https://visbody.com/visbody-m30/",
       },
       {
         id: "tech-ona",
-        title: "INDIBA ONA · Elite NS",
-        meta: "Проионика 448 кГц",
-        text:
-          "Проионный ток 448 кГц работает на уровне клеточного обмена: дренаж, восстановление после процедур и та самая подготовка, с которой начинается большинство протоколов.",
+        title: "INDIBA ONA",
+        brand: "INDIBA",
+        group: "Аппарат для лица",
+        lede:
+          "Четыре технологии в одном уходе — гидропилинг, электропорация, LED и ток низкой частоты, — и идут они в заданном порядке, а не выбираются по одной.",
+        aspects: [
+          "Двойной пилинг: составы с AHA и BHA подаются под давлением и тут же забираются насадкой при 15–80 кПа.",
+          "Электропорация уводит сыворотку на пять миллиметров — через поры, которые держат открытыми импульсы высокого напряжения.",
+          "Модулированный ток 1 кГц управляемо сокращает и отпускает мышцу лица.",
+          "Синий, красный и фиолетовый LED — на том же проходе, что и введение.",
+        ],
+        href: "https://indiba.com/products/ona/",
+      },
+      {
+        id: "tech-elite",
+        title: "INDIBA Elite NS",
+        brand: "INDIBA",
+        group: "Радиочастота · 448 кГц",
+        lede:
+          "Монополярная радиочастота 448 кГц — та самая частота, на которой построен весь метод INDIBA, и аппарат, которым здесь чаще всего открывают и закрывают протокол.",
+        aspects: [
+          "Ёмкостный и резистивный электроды: поверхностные ткани или глубокие — выбирают по задаче, а не по названию программы.",
+          "Три тепловых уровня, включая тот, где тепла ещё не чувствуешь, — для тканей, в которых ещё держится воспаление.",
+          "Один аппарат и на восстановление, и на работу с жировой тканью, и на заживление.",
+          "Работает после операций и после инъекций: отёк, гематома, рубцы.",
+        ],
+        href: "https://indiba.com/products/elite-ns/",
       },
       {
         id: "tech-reverso",
         title: "INDIBA Reverso",
-        meta: "Фракционный RF",
-        text:
-          "Радиочастота в дерму — рубцы, растяжки, рельеф. Аппарат работает с качеством кожи, а не с её маскировкой.",
+        brand: "INDIBA",
+        group: "Фракционная радиочастота",
+        lede:
+          "Фракционное обновление кожи, где под кожу подбирают не только силу импульса, но и его форму.",
+        aspects: [
+          "Четыре профиля импульса — ровный, усиленный, двойной и быстрый, — от тонкой чувствительной кожи до работы с глубоким рубцом.",
+          "Три рисунка подачи энергии: вся сетка, половина игл или чередующиеся линии — подтяжка в заданном направлении.",
+          "Мелкие морщины, постакне и послеоперационные рубцы, белые и красные растяжки, расширенные поры.",
+          "Работает и после операции — там лечат воспаление и боль, а не рельеф.",
+        ],
+        href: "https://indiba.com/products/reverso/",
       },
       {
         id: "tech-icoone",
-        title: "icoone Laser Med и Body",
-        meta: "Микростимуляция Roboderm®",
-        text:
-          "Тысячи микростимуляций в минуту на двух аппаратах: лимфодренаж, фиброз, тонус. Сорок шесть программ в четырёх разделах — медицина, эстетика, велнес и мужские.",
+        title: "icoone Laser Med",
+        brand: "icoone",
+        group: "Микростимуляция",
+        lede:
+          "Микростимуляция Roboderm®: независимо моторизованные ролики поднимают и отпускают ткань без вакуума — поэтому процедуру можно повторять хоть каждый день и после неё не остаётся синяков.",
+        aspects: [
+          "21 600 микростимуляций в минуту — число, по которому технология и названа.",
+          "Вакуума нет: насадка скользит, и даже тонкая чувствительная кожа переносит это без боли.",
+          "LED и лазерные диоды встроены в насадки и работают на том же проходе, что и массаж.",
+          "Сорок шесть программ в книге клуба — медицинские, эстетические, велнес и мужские.",
+        ],
+        href: "https://icoone.com/en/treatments-aesthetic-body/",
       },
       {
-        id: "tech-stellar",
-        title: "Lumenis Stellar M22",
-        meta: "IPL · ResurFX",
-        text:
-          "Одна платформа, несколько задач: IPL по пигменту и сосудам, ResurFX — неаблятивное обновление. Параметры подбирают по фототипу, а не по прайсу.",
+        id: "tech-quattro",
+        title: "LightSheer QUATTRO",
+        brand: "Lumenis",
+        group: "Диодный лазер",
+        lede:
+          "Две длины волны и три насадки: настройка идёт за волосом и кожей, которые перед тобой, — включая загорелую и тёмную.",
+        aspects: [
+          "805 нм и 1060 нм на одной платформе: под каждый фототип, а не безопасная середина для всех сразу.",
+          "Скоростная насадка 22×35 мм с вакуумом — меньше энергии на импульс, без геля, большие зоны быстро.",
+          "ChillTip XC 12×12 мм и ET 9×9 мм с непрерывным сапфировым контактным охлаждением — для точной работы.",
+          "Пигментные и сосудистые образования — на том же аппарате.",
+        ],
+        href: "https://lumenis.com/aesthetics/products/lightsheer/",
       },
       {
-        id: "tech-lightsheer",
-        title: "LightSheer Quattro",
-        meta: "Диодный лазер",
-        text:
-          "Четыре насадки для эпиляции — от маленькой для лица до большой для ног. Тридцать два протокола по зонам.",
+        id: "tech-ipl",
+        title: "Stellar M22 · IPL",
+        brand: "Lumenis",
+        group: "Широкополосный импульсный свет",
+        lede:
+          "Широкополосный свет от 400 до 1200 нм, отфильтрованный под мишень ещё до того, как он дошёл до кожи.",
+        aspects: [
+          "Девять экспертных фильтров в одной насадке: под задачу меняют границу спектра, а не аппарат.",
+          "Optimal Pulse Technology держит форму импульса — именно это и позволяет повторить сеанс.",
+          "Сосудистые и пигментные образования, фотостарение, волос.",
+          "Аппликатор охлаждается непрерывно, пока стоит на коже.",
+        ],
+        href: "https://lumenis.com/aesthetics/products/m22/ipl/",
       },
       {
-        id: "tech-cryo",
-        title: "CryoSkin · VIP Hi-Line · Oxygenium",
-        meta: "Контур · мышцы · кислород",
-        text:
-          "Управляемые тепло и холод для контура, миостимуляция для рельефа, кислородный уход для восстановления. Вторые роли в телесной программе — но без них она не складывается.",
+        id: "tech-resurfx",
+        title: "Stellar M22 · ResurFX",
+        brand: "Lumenis",
+        group: "Неаблятивное фракционное обновление",
+        lede:
+          "Волоконный модуль 1565 нм той же платформы — единственное по-настоящему неаблятивное фракционное обновление, и хватает одного прохода.",
+        aspects: [
+          "CoolScan ставит точки не подряд, поэтому тепло не копится в тканях.",
+          "Больше шестисот сочетаний формы, размера и плотности.",
+          "Один проход вместо нескольких: меньше времени на коже и меньше спроса с эпидермиса.",
+          "Внутри насадки всё время работает контактное охлаждение.",
+        ],
+        href: "https://lumenis.com/aesthetics/products/m22/resurfx/",
+      },
+      {
+        id: "tech-cryoskin",
+        title: "CryoSkin",
+        brand: "CryoSkin · Париж",
+        group: "Криотерапия",
+        lede:
+          "Температурный удар за один сеанс: ткань сначала прогревают, потом уводят в холод — и нигде в этом нет ни азота, ни вакуума.",
+        aspects: [
+          "Полностью электрический. Баллона с газом нет, поэтому температуру держат и видят, а не распыляют.",
+          "Без вакуума: насадка скользит, ничего в неё не втягивается.",
+          "Снижение объёма, тонус и контур лица — одной насадкой.",
+          "Разработан и собран во Франции, где эту технологию и придумали в 2013 году.",
+        ],
+        href: "https://cryoskin-international.com/",
+      },
+      {
+        id: "tech-vip",
+        title: "VIP Hi-Line",
+        brand: "VIP Italia",
+        group: "Электростимуляция",
+        lede:
+          "Нейромышечная стимуляция от дома, который с 1971 года не занимается ничем, кроме мышцы: он работает с мышцей, а не с жиром над ней.",
+        aspects: [
+          "Программы на тонус, рельеф и восстановление — задаются по группам мышц.",
+          "Неинвазивный электролимфодренаж на том же аппарате.",
+          "Изометрическая работа и микротоки для лица.",
+          "Руки свободны: электроды работают сами, клиент просто лежит.",
+        ],
+        href: "https://vipitalia.com/treatments/",
+      },
+      {
+        id: "tech-oxygenium",
+        title: "Oxygenium",
+        brand: "Fabbrimarine",
+        group: "Кислородный уход",
+        lede:
+          "Кислородная терапия для лица на итальянской морской косметике, а не на универсальном геле: самое мягкое, что есть в парке, и чаще всего именно им сеанс заканчивается.",
+        aspects: [
+          "Морские активные вещества от дома, который больше пятидесяти лет работает с морем — из Болоньи.",
+          "Составы рассчитаны на чувствительную, реактивную и повреждённую кожу, которой пилинг был бы в тягость.",
+          "Протоколы написаны так, чтобы идти следом за радиочастотой, светом и вакуумом, а не вместо них.",
+          "Подготовка, основная фаза и финиш — весь протокол от одного производителя.",
+        ],
+        href: "https://fabbrimarine.ae/",
       },
     ],
   },
