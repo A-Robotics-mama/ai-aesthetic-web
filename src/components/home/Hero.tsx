@@ -99,12 +99,28 @@ export default function Hero({ copy, lang }: { copy: Copy; lang: Lang }) {
 
         {/* The loop is a real protocol in the Face Room, shot by the club. It
             is muted, short and decorative, so it may autoplay. */}
-        <figure
-          className="relative"
-          data-reveal="mask"
-          style={{ ["--delay" as string]: "500ms" }}
-        >
-          <div className="relative overflow-hidden rounded-[1.75rem] border border-gold/25">
+        <figure className="relative flex flex-col items-end gap-7">
+          {/* Борис, 26.10.2026: «я бы добавил лого клуба справа от надписи, а
+              то место выглядит пустым». Знак встал над окном с видео — в ту
+              самую полосу справа от заголовка, которая пустовала. Крупно он
+              там и нужен: логотип нарисован тонкими линиями платы и мельче
+              рассыпается, поэтому на телефоне его здесь нет. */}
+          <img
+            src="/media/logo-440.png"
+            alt=""
+            aria-hidden
+            width={440}
+            height={440}
+            className="hidden w-36 object-contain lg:block xl:w-44"
+            data-reveal
+            style={{ ["--delay" as string]: "400ms" }}
+          />
+
+          <div
+            className="relative w-full overflow-hidden rounded-[1.75rem] border border-gold/25"
+            data-reveal="mask"
+            style={{ ["--delay" as string]: "500ms" }}
+          >
             <video
               className="aspect-[4/5] w-full object-cover sm:aspect-square"
               poster={CLIPS.hero.poster}
