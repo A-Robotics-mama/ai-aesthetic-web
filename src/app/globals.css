@@ -1,26 +1,441 @@
 @import "tailwindcss";
 
+/**
+ * The club's visual identity: gold on black.
+ *
+ * Boris, 21.10.2026: «фон у нас черный, золото на черном». The ground is a
+ * warm near-black rather than #000 — photography of skin and candlelight sits
+ * on it without the cut-out look a pure black gives — and every neutral is
+ * biased towards the gold so nothing on the page reads as a stock grey.
+ *
+ * The site commits to this one world: there is no light theme, and every
+ * colour is declared here rather than guessed per component.
+ */
+@theme {
+  --color-ink: #080706;
+  --color-ink-2: #100e0c;
+  --color-ink-3: #171310;
+  --color-gold: #c8a45d;
+  --color-gold-soft: #e9d4a3;
+  --color-bone: #f3eee5;
+  --color-sand: #a79c8a;
+
+  --font-display: var(--font-display), var(--font-display-cyrillic), "Didot", Georgia,
+    serif;
+  --font-body: var(--font-body), "Helvetica Neue", Arial, sans-serif;
+  --font-mono: var(--font-mono), var(--font-mono-cyrillic), ui-monospace, monospace;
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --gutter: 1.5rem;
+  --hairline: color-mix(in oklab, var(--color-gold) 26%, transparent);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
+@media (min-width: 1024px) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --gutter: 3rem;
   }
 }
 
+html {
+  scroll-behavior: smooth;
+  /* The fixed header is 5.5rem tall; anchors must not land underneath it. */
+  scroll-padding-top: 5.5rem;
+  background: var(--color-ink);
+}
+
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-ink);
+  color: var(--color-bone);
+  font-family: var(--font-body);
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--color-gold);
+  color: #000;
+}
+
+:focus-visible {
+  outline: 1px solid var(--color-gold);
+  outline-offset: 3px;
+}
+
+/* ---------------------------------------------------------------- type --- */
+
+.display {
+  font-family: var(--font-display);
+  font-weight: 400;
+  line-height: 0.94;
+  letter-spacing: -0.022em;
+  text-wrap: balance;
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+}
+
+.lede {
+  font-size: clamp(1.05rem, 0.95rem + 0.5vw, 1.35rem);
+  line-height: 1.75;
+  color: color-mix(in oklab, var(--color-bone) 72%, transparent);
+  max-width: 34em;
+}
+
+.mono {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+/* --------------------------------------------------------------- shell --- */
+
+.shell {
+  width: 100%;
+  max-width: 96rem;
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.hairline {
+  border-color: color-mix(in oklab, var(--color-gold) 18%, transparent);
+}
+
+/**
+ * The measurement rule.
+ *
+ * A row of fine ticks with a number at the end — the page's recurring motif,
+ * borrowed from the instruments the club actually works with. It marks a
+ * section boundary the way a scale marks a reading.
+ */
+.rule {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.rule::before {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: repeating-linear-gradient(
+    to right,
+    color-mix(in oklab, var(--color-gold) 55%, transparent) 0 1px,
+    transparent 1px 9px
+  );
+}
+
+/* --------------------------------------------------------------- grain --- */
+
+/**
+ * Film grain over the whole page. Photography pulled from a phone camera and
+ * flat black backgrounds both band badly; a little noise hides the banding and
+ * is what makes the black read as a material rather than as an empty canvas.
+ */
+.grain {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  pointer-events: none;
+  opacity: 0.4;
+  mix-blend-mode: soft-light;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* -------------------------------------------------------------- reveal --- */
+
+/**
+ * Everything that arrives on scroll is hidden only when there is something to
+ * bring it back: the `js` class is set on the document before the first paint,
+ * so a visitor with scripts blocked, or one whose connection dropped the bundle,
+ * reads a complete page instead of an empty black one.
+ */
+.js [data-reveal] {
+  opacity: 0;
+  transform: translateY(2rem);
+  transition:
+    opacity 1s cubic-bezier(0.22, 0.72, 0.2, 1),
+    transform 1.1s cubic-bezier(0.22, 0.72, 0.2, 1);
+  transition-delay: var(--delay, 0ms);
+}
+
+.js [data-reveal].is-in {
+  opacity: 1;
+  transform: none;
+}
+
+.js [data-reveal="mask"] {
+  opacity: 1;
+  transform: none;
+  clip-path: inset(0 100% 0 0);
+  transition: clip-path 1.4s cubic-bezier(0.22, 0.72, 0.2, 1);
+  transition-delay: var(--delay, 0ms);
+}
+
+.js [data-reveal="mask"].is-in {
+  clip-path: inset(0 0 0 0);
+}
+
+/* The hero headline arrives a word at a time, from under its own baseline. */
+.word {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+}
+
+.js .word > span {
+  transform: translateY(105%);
+}
+
+.word > span {
+  display: inline-block;
+  transition: transform 1.2s cubic-bezier(0.19, 0.74, 0.17, 1);
+  transition-delay: var(--delay, 0ms);
+}
+
+.is-lit .word > span {
+  transform: none;
+}
+
+/* ------------------------------------------------------------- marquee --- */
+
+.marquee {
+  display: flex;
+  width: max-content;
+  animation: slide 46s linear infinite;
+}
+
+.marquee-stop:hover .marquee {
+  animation-play-state: paused;
+}
+
+@keyframes slide {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* ------------------------------------------------------------- cursor --- */
+
+.cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 70;
+  width: 2.25rem;
+  height: 2.25rem;
+  margin: -1.125rem 0 0 -1.125rem;
+  border: 1px solid color-mix(in oklab, var(--color-gold) 70%, transparent);
+  border-radius: 999px;
+  pointer-events: none;
+  opacity: 0;
+  transition:
+    opacity 0.3s,
+    width 0.3s,
+    height 0.3s,
+    margin 0.3s,
+    background-color 0.3s;
+}
+
+.cursor.on {
+  opacity: 1;
+}
+
+.cursor.grown {
+  width: 4.5rem;
+  height: 4.5rem;
+  margin: -2.25rem 0 0 -2.25rem;
+  background: color-mix(in oklab, var(--color-gold) 12%, transparent);
+}
+
+@media (pointer: coarse) {
+  .cursor {
+    display: none;
+  }
+}
+
+/* -------------------------------------------------------------- pieces --- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 1.05rem 2.1rem;
+  font-size: 0.78rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-family: var(--font-mono);
+  border-radius: 999px;
+  transition:
+    background-color 0.4s,
+    color 0.4s,
+    border-color 0.4s,
+    transform 0.4s;
+}
+
+.btn-gold {
+  background: var(--color-gold);
+  color: #0a0806;
+}
+
+.btn-gold:hover {
+  background: var(--color-gold-soft);
+}
+
+.btn-line {
+  border: 1px solid color-mix(in oklab, var(--color-bone) 22%, transparent);
+  color: var(--color-bone);
+}
+
+.btn-line:hover {
+  border-color: var(--color-gold);
+  color: var(--color-gold);
+}
+
+/* A figure from the club's own records, set like an instrument reading. */
+.figure {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 2rem + 5vw, 6rem);
+  line-height: 1;
+  color: var(--color-gold-soft);
+  font-variant-numeric: tabular-nums;
+}
+
+.card-shade {
+  background: linear-gradient(
+    to top,
+    rgb(8 7 6 / 0.92) 0%,
+    rgb(8 7 6 / 0.45) 38%,
+    rgb(8 7 6 / 0) 70%
+  );
+}
+
+/**
+ * The intro curtain: a gold hairline draws itself over black, then the page
+ * arrives from under it.
+ *
+ * It lifts itself in CSS rather than on a timer in script, so the page behind
+ * it is the one that was served — no JavaScript, no curtain stuck over the
+ * content — and a reader who has seen it this session, or who asked for less
+ * motion, has it removed outright.
+ */
+.curtain {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  background: var(--color-ink);
+  display: grid;
+  place-items: center;
+  animation: lift 0.85s 1.15s both;
+}
+
+.curtain.skip {
+  display: none;
+}
+
+@keyframes lift {
+  to {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+}
+
+@keyframes draw {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(1.2rem);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.curtain-mark {
+  animation: rise 1s cubic-bezier(0.22, 0.72, 0.2, 1) both;
+}
+
+.curtain-line {
+  transform-origin: left;
+  animation: draw 1.1s 0.25s cubic-bezier(0.6, 0, 0.2, 1) both;
+}
+
+/* Progress through the page, as a hairline under the header. */
+.progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 55;
+  height: 1px;
+  background: var(--color-gold);
+  transform-origin: left;
+  width: 100%;
+}
+
+/* A rail that is dragged sideways, used for the programme cards. */
+.rail {
+  display: flex;
+  gap: 1.25rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  padding-bottom: 0.5rem;
+  cursor: grab;
+}
+
+.rail::-webkit-scrollbar {
+  display: none;
+}
+
+.rail.dragging {
+  cursor: grabbing;
+  scroll-snap-type: none;
+}
+
+.rail > * {
+  scroll-snap-align: start;
+  flex: 0 0 auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-delay: 0s !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    transition-delay: 0s !important;
+  }
+
+  .js [data-reveal],
+  .js [data-reveal="mask"] {
+    opacity: 1;
+    transform: none;
+    clip-path: none;
+  }
+
+  .js .word > span {
+    transform: none;
+  }
 }

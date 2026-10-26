@@ -17,6 +17,7 @@ export const dynamic = "force-static";
 export default function sitemap(): MetadataRoute.Sitemap {
   const routes = [
     { path: "/", priority: 1 },
+    { path: "/ru/", priority: 1 },
     { path: "/about/", priority: 0.8 },
     { path: "/treatments/", priority: 0.8 },
     { path: "/technologies/", priority: 0.7 },

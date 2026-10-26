@@ -1,80 +1,63 @@
 import type { Metadata } from "next";
-import SiteHeader from "@/components/layout/SiteHeader";
-import SiteFooter from "@/components/layout/SiteFooter";
+import Link from "next/link";
+import PageShell from "@/components/layout/PageShell";
+import { IMAGES } from "@/site/media";
+import { COPY } from "@/site/content";
 
 export const metadata: Metadata = {
   title: "What we do",
   description:
-    "Injectable aesthetics, skin rejuvenation, acne and rosacea programmes, body contouring and longevity care at AI Aesthetic Club in Limassol.",
+    "Face and skin, body and contour, injectables, laser and light, longevity, rituals — the six directions a programme at AI Aesthetic Club is built from.",
   alternates: { canonical: "/treatments" },
 };
 
-const treatments = [
-  {
-    title: "Injectable Aesthetics",
-    description:
-      "Botulinum toxin, dermal fillers, collagen stimulators and regenerative programmes tailored to natural facial harmony.",
-  },
-  {
-    title: "Skin Rejuvenation",
-    description:
-      "IPL, laser procedures, professional peels and advanced skin restoration protocols.",
-  },
-  {
-    title: "Acne & Rosacea",
-    description:
-      "Comprehensive programmes combining professional skincare, IPL technology and expert supervision.",
-  },
-  {
-    title: "Body Contouring",
-    description:
-      "Non-invasive procedures designed to improve body shape, skin quality and tissue firmness.",
-  },
-  {
-    title: "Longevity",
-    description:
-      "Modern programmes focused on graceful ageing, recovery and long-term wellbeing.",
-  },
-  {
-    title: "Professional Skincare",
-    description:
-      "Professional skincare programmes for daily home care and upkeep at the club.",
-  },
-];
-
+/**
+ * The same six directions as on the home page, read as a page.
+ *
+ * Both come from `content.ts`: a second list here would be a second version of
+ * the truth, and the one nobody remembers to update is always the one a visitor
+ * lands on.
+ */
 export default function TreatmentsPage() {
+  const copy = COPY.en;
+
   return (
-    <div className="flex min-h-screen flex-col bg-[#090909] text-white">
-      <SiteHeader />
+    <PageShell
+      eyebrow={copy.programmes.eyebrow}
+      title={copy.programmes.title}
+      lede={copy.programmes.lede}
+    >
+      <div className="mt-16 grid gap-10 md:grid-cols-2 lg:grid-cols-3">
+        {copy.programmes.items.map((item, index) => (
+          <article key={item.id} data-reveal style={{ ["--delay" as string]: `${index * 80}ms` }}>
+            <div className="overflow-hidden rounded-2xl border border-gold/15">
+              <img
+                src={IMAGES[item.id]}
+                alt=""
+                aria-hidden
+                loading="lazy"
+                className="aspect-[4/3] w-full object-cover"
+              />
+            </div>
 
-      <main className="mx-auto w-full max-w-7xl flex-1 px-6 py-16 lg:px-10 lg:py-24">
-        <h1 className="text-4xl font-semibold tracking-[-0.03em] sm:text-5xl">
-          What we do
-        </h1>
+            <h2 className="display mt-6 text-2xl">{item.title}</h2>
 
-        <p className="mt-8 max-w-3xl text-lg leading-8 text-white/60">
-          Every programme is individually designed after a conversation
-          and an assessment at the club. The descriptions below are general
-          information, not advice.
-        </p>
-
-        <div className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {treatments.map((item) => (
-            <article
-              key={item.title}
-              className="rounded-2xl border border-white/10 bg-[#101010] p-8"
-            >
-              <h2 className="text-2xl font-semibold">{item.title}</h2>
-
-              <p className="mt-5 leading-7 text-white/60">
-                {item.description}
+            {item.meta && (
+              <p className="mono mt-2 text-[0.6rem] tracking-[0.2em] text-gold uppercase">
+                {item.meta}
               </p>
-            </article>
-          ))}
-        </div>
-      </main>
+            )}
 
-      <SiteFooter />
-    </div>
+            <p className="mt-4 text-[0.95rem] leading-7 text-bone/60">{item.text}</p>
+          </article>
+        ))}
+      </div>
+
+      <p className="mt-14 max-w-3xl text-xs leading-6 text-sand/70">{copy.programmes.note}</p>
+
+      <Link href="/#contact" className="btn btn-gold mt-10">
+        {copy.contact.cta}
+      </Link>
+    </PageShell>
   );
 }

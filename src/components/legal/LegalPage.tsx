@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import Chrome from "@/components/chrome/Chrome";
 import SiteHeader from "@/components/layout/SiteHeader";
 import SiteFooter from "@/components/layout/SiteFooter";
 import { COMPANY, CLINIC, CONTACTS } from "@/constants/company";
@@ -53,28 +54,29 @@ export default function LegalPage({
   sections,
 }: LegalPageProps) {
   return (
-    <div className="flex min-h-screen flex-col bg-[#090909] text-white">
+    <div className="flex min-h-screen flex-col">
+      <Chrome intro={false} />
       <SiteHeader />
 
-      <main className="mx-auto w-full max-w-7xl flex-1 px-6 py-16 lg:px-10 lg:py-24">
+      <main className="mx-auto w-full max-w-7xl flex-1 px-6 pt-32 pb-20 lg:px-10 lg:pt-40 lg:pb-28">
         <header className="max-w-3xl">
-          <p className="text-sm tracking-[0.22em] text-[#c8a45d] uppercase">
+          <p className="eyebrow">
             Legal
           </p>
 
-          <h1 className="mt-4 text-4xl font-semibold tracking-[-0.03em] sm:text-5xl">
+          <h1 className="mt-4 display text-[clamp(2.2rem,1.4rem+2.8vw,3.8rem)]">
             {title}
           </h1>
 
-          <dl className="mt-6 flex flex-wrap gap-x-8 gap-y-2 text-sm text-white/40">
+          <dl className="mt-6 flex flex-wrap gap-x-8 gap-y-2 text-sm text-sand/80">
             <div className="flex gap-2">
               <dt>Version</dt>
-              <dd className="text-white/60">{version}</dd>
+              <dd className="text-bone/65">{version}</dd>
             </div>
 
             <div className="flex gap-2">
               <dt>Effective</dt>
-              <dd className="text-white/60">
+              <dd className="text-bone/65">
                 <time dateTime={effectiveDate}>{formatDate(effectiveDate)}</time>
               </dd>
             </div>
@@ -86,20 +88,20 @@ export default function LegalPage({
             aria-label="On this page"
             className="lg:sticky lg:top-10 lg:self-start"
           >
-            <h2 className="text-xs font-semibold tracking-[0.16em] text-white/40 uppercase">
+            <h2 className="text-xs font-semibold tracking-[0.16em] text-sand/80 uppercase">
               On this page
             </h2>
 
             <ol className="mt-4 space-y-2.5">
               {sections.map((section, index) => (
                 <li key={section.id} className="flex gap-3 text-sm">
-                  <span className="w-5 shrink-0 text-right tabular-nums text-white/30">
+                  <span className="w-5 shrink-0 text-right tabular-nums text-sand/60">
                     {index + 1}
                   </span>
 
                   <a
                     href={`#${section.id}`}
-                    className="text-white/55 transition hover:text-white"
+                    className="text-bone/60 transition hover:text-gold"
                   >
                     {section.title}
                   </a>
@@ -111,17 +113,17 @@ export default function LegalPage({
           <div className="min-w-0 max-w-3xl">
             <section
               aria-label="Summary"
-              className="rounded-2xl border border-[#c8a45d]/30 bg-[#c8a45d]/10 p-6 sm:p-8"
+              className="rounded-2xl border border-gold/30 bg-gold/10 p-6 sm:p-8"
             >
-              <h2 className="text-sm font-semibold tracking-[0.14em] text-[#d9bd7b] uppercase">
+              <h2 className="text-sm font-semibold tracking-[0.14em] text-gold-soft uppercase">
                 In short
               </h2>
 
-              <div className="mt-4 space-y-3 leading-8 text-white/70">
+              <div className="mt-4 space-y-3 leading-8 text-bone/75">
                 {summary}
               </div>
 
-              <p className="mt-5 text-xs leading-6 text-white/40">
+              <p className="mt-5 text-xs leading-6 text-sand/80">
                 This summary is provided for readability. Only the numbered
                 clauses below are binding.
               </p>
@@ -137,9 +139,9 @@ export default function LegalPage({
                 >
                   <h2
                     id={`${section.id}-heading`}
-                    className="flex gap-4 text-xl font-semibold tracking-tight"
+                    className="flex gap-4 display text-xl tracking-tight"
                   >
-                    <span className="tabular-nums text-[#c8a45d]">
+                    <span className="tabular-nums text-gold">
                       {index + 1}.
                     </span>
                     <span>{section.title}</span>
@@ -152,22 +154,22 @@ export default function LegalPage({
 
             <section
               aria-label="Who is responsible"
-              className="mt-14 rounded-2xl border border-white/10 bg-white/[0.03] p-6 sm:p-8"
+              className="mt-14 rounded-2xl border border-gold/15 bg-ink-2 p-6 sm:p-8"
             >
-              <h2 className="text-sm font-semibold tracking-[0.14em] text-white/50 uppercase">
+              <h2 className="text-sm font-semibold tracking-[0.14em] text-sand uppercase">
                 Data controller
               </h2>
 
-              <div className="mt-4 grid gap-6 text-sm leading-7 text-white/60 sm:grid-cols-2">
+              <div className="mt-4 grid gap-6 text-sm leading-7 text-bone/65 sm:grid-cols-2">
                 <div>
-                  <p className="font-medium text-white/90">
+                  <p className="font-medium text-bone/90">
                     {COMPANY.legalName}
                   </p>
                   <p className="mt-1">
                     Registration number {COMPANY.registrationNumber}
                   </p>
                   <p>VAT {COMPANY.vatNumber}</p>
-                  <p className="mt-3 text-white/45">Registered office</p>
+                  <p className="mt-3 text-sand/90">Registered office</p>
                   {COMPANY.registeredOffice.lines.map((line) => (
                     <p key={line}>{line}</p>
                   ))}
@@ -175,7 +177,7 @@ export default function LegalPage({
                 </div>
 
                 <div>
-                  <p className="font-medium text-white/90">
+                  <p className="font-medium text-bone/90">
                     {CLINIC.name} — the club
                   </p>
                   {CLINIC.address.lines.map((line) => (
@@ -184,7 +186,7 @@ export default function LegalPage({
                   <p>
                     {CLINIC.address.city}, {CLINIC.address.country}
                   </p>
-                  <p className="mt-3 text-white/45">
+                  <p className="mt-3 text-sand/90">
                     Privacy and data protection
                   </p>
                   <p>

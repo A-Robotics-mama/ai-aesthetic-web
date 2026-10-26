@@ -42,7 +42,7 @@ const SECTIONS: readonly LegalSection[] = [
     body: (
       <>
         <P>
-          {CLINIC.name} is a members' club in {CLINIC.address.city},
+          {CLINIC.name} is a members&rsquo; club in {CLINIC.address.city},
           operated by <Strong>{COMPANY.legalName}</Strong>, a company registered
           in the {COMPANY.jurisdiction} under number{" "}
           {COMPANY.registrationNumber}.

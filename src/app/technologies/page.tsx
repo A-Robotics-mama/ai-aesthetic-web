@@ -1,80 +1,65 @@
 import type { Metadata } from "next";
-import SiteHeader from "@/components/layout/SiteHeader";
-import SiteFooter from "@/components/layout/SiteFooter";
+import Link from "next/link";
+import PageShell from "@/components/layout/PageShell";
+import { PARK } from "@/site/media";
+import { COPY } from "@/site/content";
 
 export const metadata: Metadata = {
-  title: "Technologies",
+  title: "Technology",
   description:
-    "INDIBA Deep Beauty, IPL by Formatk Systems, laser platforms and professional skin diagnostics used at AI Aesthetic Club in Limassol.",
+    "The equipment park at AI Aesthetic Club in Limassol: ISEMECO 3D D9, Visbody, INDIBA, icoone, Lumenis Stellar M22, LightSheer Quattro, CryoSkin.",
   alternates: { canonical: "/technologies" },
 };
 
-const technologies = [
-  {
-    title: "INDIBA Deep Beauty",
-    subtitle: "Cellular regeneration",
-    description:
-      "Radiofrequency technology supporting tissue quality, skin quality, recovery after a session, for the face as well as the body.",
-  },
-  {
-    title: "IPL Formatk Systems",
-    subtitle: "Israeli platform",
-    description:
-      "Advanced IPL technology for uneven tone, pigmentation, skin rejuvenation and blemish-prone skin management using dedicated filters.",
-  },
-  {
-    title: "Laser Technologies",
-    subtitle: "Precision work",
-    description:
-      "Modern laser platforms selected according to skin type and what is needed for safe and predictable results.",
-  },
-  {
-    title: "Professional Skin Diagnostics",
-    subtitle: "Personalized assessment",
-    description:
-      "Every programme begins with a detailed conversation and skin evaluation to create an individualized protocol.",
-  },
-];
-
+/**
+ * The park in full, with what each platform is for.
+ *
+ * The list is the club's own equipment register, so this page can be checked
+ * against the machines standing in the rooms — which is the point of printing
+ * it at all.
+ */
 export default function TechnologiesPage() {
+  const copy = COPY.en;
+
   return (
-    <div className="flex min-h-screen flex-col bg-[#090909] text-white">
-      <SiteHeader />
+    <PageShell
+      eyebrow={copy.technology.eyebrow}
+      title={copy.technology.title}
+      lede={copy.technology.lede}
+    >
+      <ul className="mt-16 border-t border-gold/15">
+        {copy.technology.items.map((item, index) => (
+          <li
+            key={item.id}
+            className="grid gap-4 border-b border-gold/15 py-8 lg:grid-cols-[auto_minmax(0,18rem)_minmax(0,1fr)] lg:gap-10"
+            data-reveal
+            style={{ ["--delay" as string]: `${index * 60}ms` }}
+          >
+            <span className="mono text-[0.62rem] text-gold/60">
+              {String(index + 1).padStart(2, "0")}
+            </span>
 
-      <main className="mx-auto w-full max-w-7xl flex-1 px-6 py-16 lg:px-10 lg:py-24">
-        <h1 className="text-4xl font-semibold tracking-[-0.03em] sm:text-5xl">
-          Technologies
-        </h1>
-
-        <p className="mt-8 max-w-3xl text-lg leading-8 text-white/60">
-          We invest in technologies that provide measurable value,
-          predictable outcomes and the safety of the people we work with. Equipment names
-          belong to their respective manufacturers.
-        </p>
-
-        <div className="mt-16 space-y-6">
-          {technologies.map((item) => (
-            <section
-              key={item.title}
-              className="rounded-2xl border border-white/10 bg-[#101010] p-8 transition hover:border-[#c8a45d]/40"
-            >
-              <p className="text-sm uppercase tracking-[0.2em] text-[#c8a45d]">
-                {item.subtitle}
+            <div>
+              <h2 className="display text-[1.6rem]">{item.title}</h2>
+              <p className="mono mt-2 text-[0.58rem] tracking-[0.2em] text-sand uppercase">
+                {item.meta}
               </p>
+            </div>
 
-              <h2 className="mt-3 text-3xl font-semibold">
-                {item.title}
-              </h2>
+            <p className="text-[0.98rem] leading-7 text-bone/65">{item.text}</p>
+          </li>
+        ))}
+      </ul>
 
-              <p className="mt-5 max-w-4xl leading-8 text-white/60">
-                {item.description}
-              </p>
-            </section>
-          ))}
-        </div>
-      </main>
+      <h2 className="eyebrow mt-16">{copy.marqueeNote}</h2>
 
-      <SiteFooter />
-    </div>
+      <p className="mono mt-5 max-w-4xl text-[0.78rem] leading-8 tracking-[0.14em] text-sand uppercase">
+        {PARK.join(" · ")}
+      </p>
+
+      <Link href="/#contact" className="btn btn-gold mt-12">
+        {copy.contact.cta}
+      </Link>
+    </PageShell>
   );
 }

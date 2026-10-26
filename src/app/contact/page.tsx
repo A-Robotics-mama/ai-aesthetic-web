@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Chrome from "@/components/chrome/Chrome";
 import SiteHeader from "@/components/layout/SiteHeader";
 import SiteFooter from "@/components/layout/SiteFooter";
 import { CLINIC, COMPANY, CONTACTS } from "@/constants/company";
@@ -14,20 +15,21 @@ const CHANNELS = [CONTACTS.clinic, CONTACTS.privacy] as const;
 
 export default function ContactPage() {
   return (
-    <div className="flex min-h-screen flex-col bg-[#090909] text-white">
+    <div className="flex min-h-screen flex-col">
+      <Chrome intro={false} />
       <SiteHeader />
 
-      <main className="mx-auto w-full max-w-7xl flex-1 px-6 py-16 lg:px-10 lg:py-24">
+      <main className="mx-auto w-full max-w-7xl flex-1 px-6 pt-32 pb-20 lg:px-10 lg:pt-40 lg:pb-28">
         <header className="max-w-3xl">
-          <p className="text-sm tracking-[0.22em] text-[#c8a45d] uppercase">
+          <p className="eyebrow">
             Contact
           </p>
 
-          <h1 className="mt-4 text-4xl font-semibold tracking-[-0.03em] sm:text-5xl">
+          <h1 className="mt-4 display text-[clamp(2.2rem,1.4rem+2.8vw,3.8rem)]">
             Talk to the club.
           </h1>
 
-          <p className="mt-6 text-lg leading-8 text-white/60">
+          <p className="mt-6 text-lg leading-8 text-bone/65">
             We are glad to answer your questions and help you choose the
             programme that fits. Every message reaches a person at the
             club.
@@ -38,20 +40,20 @@ export default function ContactPage() {
           {CHANNELS.map((channel) => (
             <section
               key={channel.email}
-              className="rounded-2xl border border-white/10 bg-white/[0.03] p-8"
+              className="rounded-2xl border border-gold/15 bg-ink-2 p-8"
             >
-              <h2 className="text-xl font-semibold">{channel.label}</h2>
+              <h2 className="display text-xl">{channel.label}</h2>
 
-              <p className="mt-3 leading-7 text-white/55">{channel.purpose}</p>
+              <p className="mt-3 leading-7 text-bone/60">{channel.purpose}</p>
 
               <a
                 href={`mailto:${channel.email}`}
-                className="mt-6 inline-block text-lg text-[#c8a45d] underline-offset-4 transition hover:underline"
+                className="mt-6 inline-block text-lg text-gold underline-offset-4 transition hover:underline"
               >
                 {channel.email}
               </a>
 
-              <p className="mt-3 text-sm text-white/40">
+              <p className="mt-3 text-sm text-sand/80">
                 Typical response: {channel.responseTime}
               </p>
             </section>
@@ -59,11 +61,11 @@ export default function ContactPage() {
         </div>
 
         <div className="mt-6 grid gap-6 md:grid-cols-2">
-          <section className="rounded-2xl border border-white/10 bg-white/[0.03] p-8">
-            <h2 className="text-xl font-semibold">Visit the club</h2>
+          <section className="rounded-2xl border border-gold/15 bg-ink-2 p-8">
+            <h2 className="display text-xl">Visit the club</h2>
 
-            <address className="mt-4 space-y-1 leading-8 text-white/60 not-italic">
-              <p className="text-white/90">{CLINIC.name}</p>
+            <address className="mt-4 space-y-1 leading-8 text-bone/65 not-italic">
+              <p className="text-bone/90">{CLINIC.name}</p>
               {CLINIC.address.lines.map((line) => (
                 <p key={line}>{line}</p>
               ))}
@@ -72,33 +74,33 @@ export default function ContactPage() {
               </p>
             </address>
 
-            <p className="mt-5 text-sm leading-7 text-white/45">
+            <p className="mt-5 text-sm leading-7 text-sand/90">
               Visits by appointment. Please write to us to
               arrange a time.
             </p>
           </section>
 
-          <section className="rounded-2xl border border-white/10 bg-white/[0.03] p-8">
-            <h2 className="text-xl font-semibold">Company details</h2>
+          <section className="rounded-2xl border border-gold/15 bg-ink-2 p-8">
+            <h2 className="display text-xl">Company details</h2>
 
-            <dl className="mt-4 space-y-3 text-sm leading-7 text-white/60">
+            <dl className="mt-4 space-y-3 text-sm leading-7 text-bone/65">
               <div>
-                <dt className="text-white/40">Legal entity</dt>
-                <dd className="text-white/85">{COMPANY.legalName}</dd>
+                <dt className="text-sand/80">Legal entity</dt>
+                <dd className="text-bone/85">{COMPANY.legalName}</dd>
               </div>
 
               <div>
-                <dt className="text-white/40">Registration number</dt>
+                <dt className="text-sand/80">Registration number</dt>
                 <dd>{COMPANY.registrationNumber}</dd>
               </div>
 
               <div>
-                <dt className="text-white/40">VAT</dt>
+                <dt className="text-sand/80">VAT</dt>
                 <dd>{COMPANY.vatNumber}</dd>
               </div>
 
               <div>
-                <dt className="text-white/40">
+                <dt className="text-sand/80">
                   Registered office — for formal notices
                 </dt>
                 <dd>
@@ -114,7 +116,7 @@ export default function ContactPage() {
               </div>
             </dl>
 
-            <p className="mt-5 text-sm leading-7 text-white/45">
+            <p className="mt-5 text-sm leading-7 text-sand/90">
               The registered office is an administrative address and is not the
               club. Visits take place at the address on the left.
             </p>

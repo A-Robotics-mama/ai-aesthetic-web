@@ -10,11 +10,11 @@ import type { ReactNode } from "react";
  */
 
 export function P({ children }: { children: ReactNode }) {
-  return <p className="leading-8 text-white/60">{children}</p>;
+  return <p className="leading-8 text-bone/65">{children}</p>;
 }
 
 export function Strong({ children }: { children: ReactNode }) {
-  return <strong className="font-medium text-white/90">{children}</strong>;
+  return <strong className="font-medium text-bone/90">{children}</strong>;
 }
 
 export function UL({ children }: { children: ReactNode }) {
@@ -23,8 +23,8 @@ export function UL({ children }: { children: ReactNode }) {
 
 export function LI({ children }: { children: ReactNode }) {
   return (
-    <li className="flex gap-3 leading-8 text-white/60">
-      <span aria-hidden className="mt-3 h-px w-4 shrink-0 bg-[#c8a45d]/60" />
+    <li className="flex gap-3 leading-8 text-bone/65">
+      <span aria-hidden className="mt-3 h-px w-4 shrink-0 bg-gold/60" />
       <span className="min-w-0">{children}</span>
     </li>
   );
@@ -34,7 +34,7 @@ export function MailLink({ email }: { email: string }) {
   return (
     <a
       href={`mailto:${email}`}
-      className="text-[#c8a45d] underline-offset-4 transition hover:underline"
+      className="text-gold underline-offset-4 transition hover:underline"
     >
       {email}
     </a>
@@ -74,7 +74,7 @@ export function MailButton({
   return (
     <a
       href={href}
-      className="inline-flex rounded-full bg-[#c8a45d] px-8 py-4 text-center font-medium text-black transition hover:bg-[#d8b96e]"
+      className="inline-flex btn btn-gold"
     >
       {children}
     </a>
@@ -93,7 +93,7 @@ export function ExternalLink({
       href={href}
       target="_blank"
       rel="noreferrer noopener"
-      className="text-[#c8a45d] underline-offset-4 transition hover:underline"
+      className="text-gold underline-offset-4 transition hover:underline"
     >
       {children}
     </a>
@@ -113,8 +113,8 @@ export function Defs({
     <dl className="space-y-5">
       {items.map((item) => (
         <div key={item.term}>
-          <dt className="font-medium text-white/90">{item.term}</dt>
-          <dd className="mt-1.5 leading-8 text-white/60">{item.description}</dd>
+          <dt className="font-medium text-bone/90">{item.term}</dt>
+          <dd className="mt-1.5 leading-8 text-bone/65">{item.description}</dd>
         </div>
       ))}
     </dl>
@@ -146,7 +146,7 @@ export function Table<Row extends Record<string, string>>({
           <caption className="sr-only">{caption}</caption>
 
           <thead>
-            <tr className="border-b border-white/15">
+            <tr className="border-b border-bone/20">
               {columns.map((column) => (
                 <th
                   key={column.key}
@@ -161,11 +161,11 @@ export function Table<Row extends Record<string, string>>({
 
           <tbody>
             {rows.map((row) => (
-              <tr key={row[columns[0].key]} className="border-b border-white/10">
+              <tr key={row[columns[0].key]} className="border-b border-gold/15">
                 {columns.map((column) => (
                   <td
                     key={column.key}
-                    className="py-4 pr-6 align-top leading-7 text-white/60"
+                    className="py-4 pr-6 align-top leading-7 text-bone/65"
                   >
                     {row[column.key]}
                   </td>
@@ -180,15 +180,15 @@ export function Table<Row extends Record<string, string>>({
         {rows.map((row) => (
           <li
             key={row[columns[0].key]}
-            className="rounded-xl border border-white/10 bg-white/[0.03] p-5"
+            className="rounded-xl border border-gold/15 bg-ink-2 p-5"
           >
             <dl className="space-y-3">
               {columns.map((column) => (
                 <div key={column.key}>
-                  <dt className="text-xs tracking-[0.14em] text-white/40 uppercase">
+                  <dt className="text-xs tracking-[0.14em] text-sand/80 uppercase">
                     {column.heading}
                   </dt>
-                  <dd className="mt-1 leading-7 text-white/65">
+                  <dd className="mt-1 leading-7 text-bone/70">
                     {row[column.key]}
                   </dd>
                 </div>
