@@ -118,9 +118,11 @@ export default function ProfileCard({
               {copy.role}
             </p>
 
-            <p className="lede mt-7" data-reveal style={{ ["--delay" as string]: "240ms" }}>
-              {copy.lede}
-            </p>
+            {copy.lede && (
+              <p className="lede mt-7" data-reveal style={{ ["--delay" as string]: "240ms" }}>
+                {copy.lede}
+              </p>
+            )}
 
             <dl className="mt-12 border-t border-gold/15">
               {rows.map((row, index) => (

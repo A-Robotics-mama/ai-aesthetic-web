@@ -36,7 +36,11 @@ export type PersonCopy = {
   eyebrow: string;
   /** Должность одной строкой. */
   role: string;
-  /** Две-три фразы о том, как она работает. */
+  /**
+   * Две-три фразы о человеке — словами клуба, не моими. Пока пусто: Борис,
+   * 27.10.2026, «Спрашивай что писать!!!». Пустая строка не печатается ни на
+   * странице, ни в `.vcf` — как и пустой телефон.
+   */
   lede: string;
   /** Подписи строк карточки. */
   labels: {
@@ -70,8 +74,7 @@ export const SOFIIA: PersonCard = {
   en: {
     eyebrow: `${CLINIC.address.city} · ${CLINIC.address.country}`,
     role: "Dermatologist",
-    lede:
-      "Sees every member herself, and starts with the readings rather than the treatment: an instrument assessment first, then a protocol written around it, then the same measurements again to show what changed.",
+    lede: "",
     labels: {
       email: "Email",
       phone: "Phone",
@@ -91,8 +94,7 @@ export const SOFIIA: PersonCard = {
   ru: {
     eyebrow: "Лимассол · Кипр",
     role: "Врач-дерматолог",
-    lede:
-      "Ведёт приём сама и начинает с показателей, а не с процедуры: сначала аппаратная диагностика, потом протокол, собранный под её результаты, потом те же замеры заново — чтобы было видно, что изменилось.",
+    lede: "",
     labels: {
       email: "Почта",
       phone: "Телефон",

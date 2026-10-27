@@ -69,6 +69,8 @@ export function vcard(card: PersonCard, lang: "en" | "ru" = "en"): string {
   if (card.phone) fields.push(["TEL;TYPE=CELL,VOICE", card.phone]);
   if (card.email) fields.push(["EMAIL;TYPE=INTERNET,PREF", card.email]);
 
+  if (copy.lede) fields.push(["NOTE", esc(copy.lede)]);
+
   fields.push(
     /* ADR: почтовый ящик; дополнение; улица; город; область; индекс; страна. */
     [
@@ -77,7 +79,6 @@ export function vcard(card: PersonCard, lang: "en" | "ru" = "en"): string {
     ],
     ["URL", `${CLINIC.origin}/${card.slug}/`],
     ["X-SOCIALPROFILE;TYPE=instagram", card.instagram.url],
-    ["NOTE", esc(copy.lede)],
     /* REV обязателен для 3.0 и показывает телефону, что карточка свежее той,
        что уже лежит в контактах. Дата сборки, не времени запроса: страница
        статическая, и второго значения у неё быть не может. */
