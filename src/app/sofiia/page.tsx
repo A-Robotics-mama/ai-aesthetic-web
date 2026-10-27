@@ -5,19 +5,26 @@ import { SOFIIA, fullName } from "@/constants/people";
 
 const NAME = fullName(SOFIIA);
 
+/**
+ * Страница, на которую смотрит NFC-карта Софии.
+ *
+ * Только по-английски: «всё, русского не надо» (27.10.2026). Из поиска
+ * страница закрыта — визитка существует для того, кому её дали в руку.
+ */
 export const metadata: Metadata = {
   title: NAME,
-  description: `${NAME}, ${SOFIIA.en.role} at ${CLINIC.name}, ${CLINIC.address.city}. Contact card: email, address and hours.`,
-  alternates: { canonical: "/sofiia", languages: { en: "/sofiia", ru: "/ru/sofiia" } },
+  description: `${NAME}, ${SOFIIA.role} of ${CLINIC.name}, ${CLINIC.address.city}. Contact card: phone, email and address.`,
+  alternates: { canonical: "/sofiia" },
+  robots: { index: false, follow: true },
   openGraph: {
     type: "profile",
     url: `${CLINIC.origin}/sofiia`,
     siteName: CLINIC.name,
-    title: `${NAME} · ${CLINIC.name}`,
-    description: SOFIIA.en.lede,
+    title: `${NAME} · ${SOFIIA.role}`,
+    description: `${CLINIC.name}, ${CLINIC.address.city}.`,
   },
 };
 
 export default function SofiiaPage() {
-  return <ProfileCard card={SOFIIA} lang="en" />;
+  return <ProfileCard card={SOFIIA} />;
 }

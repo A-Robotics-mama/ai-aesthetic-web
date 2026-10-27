@@ -5,12 +5,13 @@ import { CARD_ORG, fullName, type PersonCard } from "@/constants/people";
  * Карточка контакта в формате vCard.
  *
  * Версия 3.0, а не 4.0: четвёртую понимают не все телефоны, а третью кладёт в
- * контакты всё, что встречается у клиентов — iPhone, Android, Outlook. Строки
+ * контакты всё, что встречается у гостей — iPhone, Android, Outlook. Строки
  * разделяются CRLF и сворачиваются по 75 октетов, как требует RFC 2426: iOS
  * прощает длинную строку, но Outlook на ней спотыкается.
  *
- * Пустые поля пропускаются: карточка без телефона — это карточка без строки
- * TEL, а не со строкой `TEL:`, которая в контактах выглядит как пустой номер.
+ * Пустые поля пропускаются: карточка без WhatsApp — это карточка без строки,
+ * а не строка `X-SOCIALPROFILE:`, которая в контактах выглядит как пустая
+ * ссылка.
  */
 
 /** Экранирование по RFC 2426: запятая, точка с запятой, обратный слэш, перевод строки. */
@@ -23,9 +24,8 @@ function esc(value: string): string {
 }
 
 /**
- * Свёртка длинной строки. Считаем октеты, а не знаки: в «Врач-дерматолог»
- * каждая буква занимает два байта, и предел в 75 наступает вдвое раньше, чем
- * кажется по длине строки.
+ * Свёртка длинной строки. Считаем октеты, а не знаки: в кириллице и в
+ * base64-снимке предел в 75 наступает не там, где кажется по длине строки.
  */
 function fold(line: string): string[] {
   const bytes = new TextEncoder().encode(line);
@@ -53,8 +53,7 @@ function fold(line: string): string[] {
   return out;
 }
 
-export function vcard(card: PersonCard, lang: "en" | "ru" = "en"): string {
-  const copy = card[lang];
+export function vcard(card: PersonCard): string {
   const name = fullName(card);
   const { lines, city, country } = CLINIC.address;
 
@@ -63,13 +62,12 @@ export function vcard(card: PersonCard, lang: "en" | "ru" = "en"): string {
     ["N", `${esc(card.name.last)};${esc(card.name.first)};;${esc(card.name.prefix)};`],
     ["FN", esc(name)],
     ["ORG", esc(CARD_ORG.club)],
-    ["TITLE", esc(copy.role)],
+    ["TITLE", esc(card.role)],
   ];
 
+  /* Телефон выше почты: карточку дают в руку, чтобы позвонили. */
   if (card.phone) fields.push(["TEL;TYPE=CELL,VOICE", card.phone]);
   if (card.email) fields.push(["EMAIL;TYPE=INTERNET,PREF", card.email]);
-
-  if (copy.lede) fields.push(["NOTE", esc(copy.lede)]);
 
   fields.push(
     /* ADR: почтовый ящик; дополнение; улица; город; область; индекс; страна. */
@@ -79,11 +77,17 @@ export function vcard(card: PersonCard, lang: "en" | "ru" = "en"): string {
     ],
     ["URL", `${CLINIC.origin}/${card.slug}/`],
     ["X-SOCIALPROFILE;TYPE=instagram", card.instagram.url],
-    /* REV обязателен для 3.0 и показывает телефону, что карточка свежее той,
-       что уже лежит в контактах. Дата сборки, не времени запроса: страница
-       статическая, и второго значения у неё быть не может. */
-    ["REV", new Date().toISOString().replace(/\.\d+Z$/, "Z")],
   );
+
+  /* Снимок прямо в карточке: телефон покажет лицо в контактах, и ради этого
+     его стоит нести в файле, а не ссылкой — ссылка умрёт вместе с хостингом.
+     JPEG в base64, как понимают оба телефона. */
+  if (card.photo) fields.push(["PHOTO;ENCODING=b;TYPE=JPEG", card.photo]);
+
+  /* REV обязателен для 3.0 и показывает телефону, что карточка свежее той,
+     что уже лежит в контактах. Дата сборки, не времени запроса: страница
+     статическая, и второго значения у неё быть не может. */
+  fields.push(["REV", new Date().toISOString().replace(/\.\d+Z$/, "Z")]);
 
   const body = fields.flatMap(([key, value]) => fold(`${key}:${value}`));
 
