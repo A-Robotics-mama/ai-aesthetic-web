@@ -31,12 +31,15 @@ export type PersonCard = {
    */
   whatsapp: string;
   instagram: { handle: string; url: string };
-  /**
-   * Фотография для страницы и для поля PHOTO в карточке контакта. Пусто:
-   * снимок лежит у Бориса на data-hub рядом с её карточкой MS Cosmotrade,
-   * с моих хостов этот хост недоступен.
-   */
+  /** Снимок для страницы: квадрат по лицу. */
   photo: string;
+  /**
+   * Тот же снимок для поля PHOTO внутри `.vcf` — путь от `public/`. JPEG, а
+   * не webp: контакты на телефоне понимают JPEG, webp не везде. Файл читается
+   * на сборке и уезжает в карточку в base64, чтобы лицо было видно в
+   * контактах и тогда, когда хостинга уже нет.
+   */
+  photoFile: string;
   labels: {
     phone: string;
     whatsapp: string;
@@ -57,12 +60,14 @@ export const SOFIIA: PersonCard = {
   role: "Owner & Director",
   email: "office@ai-aesthetic.eu",
   phone: "+357 99 779776",
-  whatsapp: "",
+  /* Тот же номер, что и телефон: он же стоит в её карточке MS Cosmotrade. */
+  whatsapp: "+357 99 779776",
   instagram: {
     handle: "@ai.aesthetic_club",
     url: "https://www.instagram.com/ai.aesthetic_club/",
   },
-  photo: "",
+  photo: "/media/sofiia.webp",
+  photoFile: "media/sofiia-card.jpg",
   labels: {
     phone: "Phone",
     whatsapp: "WhatsApp",

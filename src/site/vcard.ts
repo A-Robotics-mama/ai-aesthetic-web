@@ -53,7 +53,7 @@ function fold(line: string): string[] {
   return out;
 }
 
-export function vcard(card: PersonCard): string {
+export function vcard(card: PersonCard, photo?: string): string {
   const name = fullName(card);
   const { lines, city, country } = CLINIC.address;
 
@@ -65,8 +65,11 @@ export function vcard(card: PersonCard): string {
     ["TITLE", esc(card.role)],
   ];
 
-  /* Телефон выше почты: карточку дают в руку, чтобы позвонили. */
+  /* Телефон выше почты: карточку дают в руку, чтобы позвонили. Отдельная
+     строка WHATSAPP — как в её карточке MS Cosmotrade: телефон её покажет
+     рядом с номером, а кто не понимает этот тип, просто видит второй номер. */
   if (card.phone) fields.push(["TEL;TYPE=CELL,VOICE", card.phone]);
+  if (card.whatsapp) fields.push(["TEL;TYPE=WHATSAPP", card.whatsapp]);
   if (card.email) fields.push(["EMAIL;TYPE=INTERNET,PREF", card.email]);
 
   fields.push(
@@ -82,7 +85,7 @@ export function vcard(card: PersonCard): string {
   /* Снимок прямо в карточке: телефон покажет лицо в контактах, и ради этого
      его стоит нести в файле, а не ссылкой — ссылка умрёт вместе с хостингом.
      JPEG в base64, как понимают оба телефона. */
-  if (card.photo) fields.push(["PHOTO;ENCODING=b;TYPE=JPEG", card.photo]);
+  if (photo) fields.push(["PHOTO;ENCODING=b;TYPE=JPEG", photo]);
 
   /* REV обязателен для 3.0 и показывает телефону, что карточка свежее той,
      что уже лежит в контактах. Дата сборки, не времени запроса: страница
