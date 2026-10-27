@@ -34,7 +34,12 @@ export type PersonCard = {
 export type PersonCopy = {
   /** Надзаголовок над именем. */
   eyebrow: string;
-  /** Должность одной строкой. */
+  /**
+   * Должность одной строкой — словами Бориса, 27.10.2026: «нахуй
+   * специальность!!! она Owner & Director». Из базы (`practitioners`) здесь
+   * ничего не берётся: там специальность для расписания, а не подпись
+   * на визитке.
+   */
   role: string;
   /**
    * Две-три фразы о человеке — словами клуба, не моими. Пока пусто: Борис,
@@ -73,7 +78,7 @@ export const SOFIIA: PersonCard = {
 
   en: {
     eyebrow: `${CLINIC.address.city} · ${CLINIC.address.country}`,
-    role: "Dermatologist",
+    role: "Owner & Director",
     lede: "",
     labels: {
       email: "Email",
@@ -93,7 +98,7 @@ export const SOFIIA: PersonCard = {
 
   ru: {
     eyebrow: "Лимассол · Кипр",
-    role: "Врач-дерматолог",
+    role: "Owner & Director",
     lede: "",
     labels: {
       email: "Почта",
