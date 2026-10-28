@@ -49,6 +49,8 @@ export type Copy = {
   nav: { href: string; label: string }[];
   hero: {
     eyebrow: string;
+    /** Название программы над заголовком; на обоих языках по-английски. */
+    kicker: string;
     /** Words wrapped in *asterisks* are set in gold italic. */
     headline: string;
     lede: string;
@@ -119,6 +121,7 @@ const EN: Copy = {
   ],
   hero: {
     eyebrow: "Limassol · Cyprus · since 2024",
+    kicker: "Wellness for Longevity",
     headline: "The club where beauty is *measured*.",
     lede:
       "Diagnostics first, the protocol second. Twelve technologies, five rooms and one plan built around your own readings — at Dream Tower, Limassol.",
@@ -508,6 +511,7 @@ const RU: Copy = {
   ],
   hero: {
     eyebrow: "Лимассол · Кипр · с 2024 года",
+    kicker: "Wellness for Longevity",
     headline: "Клуб, где красоту *измеряют*.",
     lede:
       "Сначала диагностика, потом протокол. Двенадцать аппаратов, пять кабинетов и один план, собранный по Вашим собственным показателям — Dream Tower, Лимассол.",

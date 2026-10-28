@@ -46,8 +46,16 @@ export default function Hero({ copy, lang }: { copy: Copy; lang: Lang }) {
             {copy.hero.eyebrow}
           </p>
 
+          <p
+            className="display mt-5 text-gold text-[clamp(1.25rem,0.85rem+1.3vw,2.1rem)]"
+            data-reveal
+            style={{ ["--delay" as string]: "60ms" }}
+          >
+            {copy.hero.kicker}
+          </p>
+
           <h1
-            className={`display display-xl mt-7 text-[clamp(2.6rem,1.1rem+4.1vw,6.2rem)] ${
+            className={`display display-xl mt-3 text-[clamp(2.6rem,1.1rem+4.1vw,6.2rem)] ${
               lit ? "is-lit" : ""
             }`}
           >
